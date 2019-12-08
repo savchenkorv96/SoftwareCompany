@@ -8,13 +8,13 @@ namespace SoftwareCompany.DAL.Core
 {
     public class ApplicationDbContext : DbContext
     {
-        public DbSet<Account> AccountSet { get; set; }
-        public DbSet<Employee> EmployeeSet { get; set; }
-        public DbSet<Team> TeamSet { get; set; }
-        public DbSet<Customer> CustomerSet { get; set; }
-        public DbSet<Company> CompanySet { get; set; }
-        public DbSet<Project> ProjectSet { get; set; }
-        public DbSet<Task> TaskSet { get; set; }
+        public DbSet<Account> Accounts { get; set; }
+        public DbSet<Employee> Employees { get; set; }
+        public DbSet<Team> Teams { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Company> Companies { get; set; }
+        public DbSet<Project> Projects { get; set; }
+        public DbSet<Task> Tasks { get; set; }
 
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {
