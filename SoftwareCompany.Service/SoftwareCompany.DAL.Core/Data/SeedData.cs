@@ -60,6 +60,7 @@ namespace SoftwareCompany.DAL.Core.Data
                     Phone = "380688700610", Email = "lysenko@gmail.com", Skype = "lysenko", Type = AccountType.Customer
                 }
             );
+                context.SaveChanges();
             }
 
             if (!context.Teams.Any())
@@ -69,7 +70,7 @@ namespace SoftwareCompany.DAL.Core.Data
                     {
                         Name = "ISTKM",
                         Description = "Clean Arch"
-                    });
+                    }); context.SaveChanges();
             }
 
             if (!context.Employees.Any())
@@ -80,23 +81,25 @@ namespace SoftwareCompany.DAL.Core.Data
                         Account = context.Accounts.First(row => row.Login == "user1"),
                         DateOfEmployment = DateTime.UtcNow,
                         Team = context.Teams.First(row => row.Name == "ISTKM"),
-                        Position = "Developer", Salary = 600
+                        Position = "Developer",
+                        Salary = 600
                     },
                     new Employee()
                     {
                         Account = context.Accounts.First(row => row.Login == "user2"),
                         DateOfEmployment = DateTime.UtcNow,
                         Team = context.Teams.First(row => row.Name == "ISTKM"),
-                        Position = "Developer", Salary = 600
-                    });
+                        Position = "Developer",
+                        Salary = 600
+                    }); context.SaveChanges();
             }
 
             if (!context.Companies.Any())
             {
                 context.Companies.AddRange(
-                    new Company() {Name = "Lysenko LTD", Description = "Games"},
-                    new Company() {Name = "Perepelica LTD", Description = "Post system"}
-                );
+                    new Company() { Name = "Lysenko LTD", Description = "Games" },
+                    new Company() { Name = "Perepelica LTD", Description = "Post system" }
+                ); context.SaveChanges();
             }
 
             if (!context.Customers.Any())
@@ -112,7 +115,7 @@ namespace SoftwareCompany.DAL.Core.Data
                         Account = context.Accounts.First(row => row.Login == "user4"),
                         Company = context.Companies.First(row => row.Name == "Lysenko LTD")
                     }
-                );
+                ); context.SaveChanges();
             }
 
             if (!context.Projects.Any())
@@ -120,14 +123,17 @@ namespace SoftwareCompany.DAL.Core.Data
                 context.Projects.AddRange(
                     new Project()
                     {
-                        Title = "SoftwareCompany", Description = "Course work",
-                        Customer = context.Customers.First(row => row.Company.Description == "Lysenko LTD"),
+                        Title = "SoftwareCompany",
+                        Description = "Course work",
+                        Customer = context.Customers.First(row => row.Company.Name == "Lysenko LTD"),
                         Manager = context.Employees.First(row => row.Account.Login == "user1"),
                         StartTime = DateTime.Now,
-                        EndTime = DateTime.Now.AddDays(24), Type = ProjectType.Web, Status = ProjectStatus.New,
+                        EndTime = DateTime.Now.AddDays(24),
+                        Type = ProjectType.Web,
+                        Status = ProjectStatus.New,
                         Team = context.Teams.First(row => row.Name == "ISTKM")
                     }
-                );
+                ); context.SaveChanges();
             }
 
             if (!context.Tasks.Any())
@@ -136,14 +142,16 @@ namespace SoftwareCompany.DAL.Core.Data
 
                     new Task()
                     {
-                        Employee = context.Employees.First(row => row.Account.Login == "user2"), Complexity = 24,
-                        Deadline = DateTime.Now.AddDays(5), Title = "Create Repository",
+                        Employee = context.Employees.First(row => row.Account.Login == "user2"),
+                        Complexity = 24,
+                        Deadline = DateTime.Now.AddDays(5),
+                        Title = "Create Repository",
                         Description = "Create repository for Employee Table",
                         Project = context.Projects.First(row => row.Title == "SoftwareCompany"),
                         Status = TaskStatus.Open
                     }
 
-                );
+                ); context.SaveChanges();
             }
 
         }
