@@ -18,7 +18,7 @@ namespace SoftwareCompany.Core
            
 
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration["Data:SqlServer:ConnectionString"], b => b.MigrationsAssembly("SoftwareCompany.Service")));
+                options.UseSqlite(Configuration["Data:SqlLite:ConnectionString"], b => b.MigrationsAssembly("SoftwareCompany.Service")));
 
            
         }
