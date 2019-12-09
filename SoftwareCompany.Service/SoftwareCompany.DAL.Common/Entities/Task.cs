@@ -11,7 +11,7 @@ namespace SoftwareCompany.DAL.Common.Entities
         public string Title { get; set; }
         public string Description { get; set; }
         public Project Project { get; set; }
-        public Account Account { get; set; }
+        public Employee Employee { get; set; }
         public DateTime Deadline { get; set; }
         public double Complexity { get; set; }
         public TaskStatus Status { get; set; }

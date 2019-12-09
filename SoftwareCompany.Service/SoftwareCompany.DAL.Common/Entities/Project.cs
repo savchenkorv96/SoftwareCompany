@@ -12,7 +12,7 @@ namespace SoftwareCompany.DAL.Common.Entities
         public string Description { get; set; }
         public Customer Customer { get; set; }
         public Team Team { get; set; }
-        public Account Manager { get; set; }
+        public Employee Manager { get; set; }
         public ProjectType Type { get; set; }
         public ProjectStatus Status { get; set; }
         public DateTime StartTime { get; set; }
