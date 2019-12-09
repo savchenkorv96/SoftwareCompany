@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SoftwareCompany.DAL.Core;
+using SoftwareCompany.DAL.Core.Data;
 
 namespace SoftwareCompany.Core
 {
@@ -25,7 +26,7 @@ namespace SoftwareCompany.Core
 
         public void Configure(IApplicationBuilder app)
         {
-            
+            SeedData.EnsurePopulated(app);
         }
     }
 }

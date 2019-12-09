@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SoftwareCompany.Service.Migrations
 {
-    public partial class Initial : Migration
+    public partial class UpdateTable : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -42,44 +42,17 @@ namespace SoftwareCompany.Service.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Employees",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    AccountId = table.Column<int>(nullable: true),
-                    Position = table.Column<string>(nullable: true),
-                    Salary = table.Column<decimal>(nullable: false),
-                    DateOfEmployment = table.Column<DateTime>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Employees", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Employees_Accounts_AccountId",
-                        column: x => x.AccountId,
-                        principalTable: "Accounts",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Teams",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    AccountId = table.Column<int>(nullable: true)
+                    Name = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Teams", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Teams_Accounts_AccountId",
-                        column: x => x.AccountId,
-                        principalTable: "Accounts",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -104,6 +77,35 @@ namespace SoftwareCompany.Service.Migrations
                         name: "FK_Customers_Companies_CompanyId",
                         column: x => x.CompanyId,
                         principalTable: "Companies",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Employees",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    AccountId = table.Column<int>(nullable: true),
+                    TeamId = table.Column<int>(nullable: true),
+                    Position = table.Column<string>(nullable: true),
+                    Salary = table.Column<decimal>(nullable: false),
+                    DateOfEmployment = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Employees", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Employees_Accounts_AccountId",
+                        column: x => x.AccountId,
+                        principalTable: "Accounts",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Employees_Teams_TeamId",
+                        column: x => x.TeamId,
+                        principalTable: "Teams",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -134,9 +136,9 @@ namespace SoftwareCompany.Service.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Projects_Accounts_ManagerId",
+                        name: "FK_Projects_Employees_ManagerId",
                         column: x => x.ManagerId,
-                        principalTable: "Accounts",
+                        principalTable: "Employees",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
@@ -156,7 +158,7 @@ namespace SoftwareCompany.Service.Migrations
                     Title = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     ProjectId = table.Column<int>(nullable: true),
-                    AccountId = table.Column<int>(nullable: true),
+                    EmployeeId = table.Column<int>(nullable: true),
                     Deadline = table.Column<DateTime>(nullable: false),
                     Complexity = table.Column<double>(nullable: false),
                     Status = table.Column<int>(nullable: false)
@@ -165,9 +167,9 @@ namespace SoftwareCompany.Service.Migrations
                 {
                     table.PrimaryKey("PK_Tasks", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Tasks_Accounts_AccountId",
-                        column: x => x.AccountId,
-                        principalTable: "Accounts",
+                        name: "FK_Tasks_Employees_EmployeeId",
+                        column: x => x.EmployeeId,
+                        principalTable: "Employees",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
@@ -194,6 +196,11 @@ namespace SoftwareCompany.Service.Migrations
                 column: "AccountId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Employees_TeamId",
+                table: "Employees",
+                column: "TeamId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Projects_CustomerId",
                 table: "Projects",
                 column: "CustomerId");
@@ -209,26 +216,18 @@ namespace SoftwareCompany.Service.Migrations
                 column: "TeamId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Tasks_AccountId",
+                name: "IX_Tasks_EmployeeId",
                 table: "Tasks",
-                column: "AccountId");
+                column: "EmployeeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Tasks_ProjectId",
                 table: "Tasks",
                 column: "ProjectId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Teams_AccountId",
-                table: "Teams",
-                column: "AccountId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Employees");
-
             migrationBuilder.DropTable(
                 name: "Tasks");
 
@@ -239,13 +238,16 @@ namespace SoftwareCompany.Service.Migrations
                 name: "Customers");
 
             migrationBuilder.DropTable(
-                name: "Teams");
+                name: "Employees");
 
             migrationBuilder.DropTable(
                 name: "Companies");
 
             migrationBuilder.DropTable(
                 name: "Accounts");
+
+            migrationBuilder.DropTable(
+                name: "Teams");
         }
     }
 }

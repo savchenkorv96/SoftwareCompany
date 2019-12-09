@@ -9,8 +9,8 @@ using SoftwareCompany.DAL.Core;
 namespace SoftwareCompany.Service.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20191209191402_Initial")]
-    partial class Initial
+    [Migration("20191209203623_UpdateTable")]
+    partial class UpdateTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -109,9 +109,14 @@ namespace SoftwareCompany.Service.Migrations
                     b.Property<decimal>("Salary")
                         .HasColumnType("TEXT");
 
+                    b.Property<int?>("TeamId")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("Id");
 
                     b.HasIndex("AccountId");
+
+                    b.HasIndex("TeamId");
 
                     b.ToTable("Employees");
                 });
@@ -166,9 +171,6 @@ namespace SoftwareCompany.Service.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("AccountId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<double>("Complexity")
                         .HasColumnType("REAL");
 
@@ -177,6 +179,9 @@ namespace SoftwareCompany.Service.Migrations
 
                     b.Property<string>("Description")
                         .HasColumnType("TEXT");
+
+                    b.Property<int?>("EmployeeId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<int?>("ProjectId")
                         .HasColumnType("INTEGER");
@@ -189,7 +194,7 @@ namespace SoftwareCompany.Service.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AccountId");
+                    b.HasIndex("EmployeeId");
 
                     b.HasIndex("ProjectId");
 
@@ -202,12 +207,13 @@ namespace SoftwareCompany.Service.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("AccountId")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Description")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AccountId");
 
                     b.ToTable("Teams");
                 });
@@ -228,6 +234,10 @@ namespace SoftwareCompany.Service.Migrations
                     b.HasOne("SoftwareCompany.DAL.Common.Entities.Account", "Account")
                         .WithMany()
                         .HasForeignKey("AccountId");
+
+                    b.HasOne("SoftwareCompany.DAL.Common.Entities.Team", "Team")
+                        .WithMany()
+                        .HasForeignKey("TeamId");
                 });
 
             modelBuilder.Entity("SoftwareCompany.DAL.Common.Entities.Project", b =>
@@ -236,7 +246,7 @@ namespace SoftwareCompany.Service.Migrations
                         .WithMany()
                         .HasForeignKey("CustomerId");
 
-                    b.HasOne("SoftwareCompany.DAL.Common.Entities.Account", "Manager")
+                    b.HasOne("SoftwareCompany.DAL.Common.Entities.Employee", "Manager")
                         .WithMany()
                         .HasForeignKey("ManagerId");
 
@@ -247,20 +257,13 @@ namespace SoftwareCompany.Service.Migrations
 
             modelBuilder.Entity("SoftwareCompany.DAL.Common.Entities.Task", b =>
                 {
-                    b.HasOne("SoftwareCompany.DAL.Common.Entities.Account", "Account")
+                    b.HasOne("SoftwareCompany.DAL.Common.Entities.Employee", "Employee")
                         .WithMany()
-                        .HasForeignKey("AccountId");
+                        .HasForeignKey("EmployeeId");
 
                     b.HasOne("SoftwareCompany.DAL.Common.Entities.Project", "Project")
                         .WithMany()
                         .HasForeignKey("ProjectId");
-                });
-
-            modelBuilder.Entity("SoftwareCompany.DAL.Common.Entities.Team", b =>
-                {
-                    b.HasOne("SoftwareCompany.DAL.Common.Entities.Account", "Account")
-                        .WithMany()
-                        .HasForeignKey("AccountId");
                 });
 #pragma warning restore 612, 618
         }
