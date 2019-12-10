@@ -23,12 +23,6 @@ namespace SoftwareCompany.DAL.Core.Data
 
             PushData();
 
-
-            foreach (var itemAccount in context.Accounts.ToList())
-            {
-                Console.WriteLine(itemAccount.Login + " | " + itemAccount.Password);
-            }
-
         }
 
         private static void PushData()
