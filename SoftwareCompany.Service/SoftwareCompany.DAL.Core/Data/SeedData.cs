@@ -13,13 +13,13 @@ namespace SoftwareCompany.DAL.Core.Data
 {
     public static class SeedData
     {
-        private static ApplicationDbContext context { get; set; }
+        private static ApplicationDbContext Context { get; set; }
 
         public static void EnsurePopulated(IApplicationBuilder app)
         {
-            context = app.ApplicationServices.GetRequiredService<ApplicationDbContext>();
+            Context = app.ApplicationServices.GetRequiredService<ApplicationDbContext>();
 
-            context.Database.Migrate();
+            Context.Database.Migrate();
 
             PushData();
 
@@ -27,9 +27,9 @@ namespace SoftwareCompany.DAL.Core.Data
 
         private static void PushData()
         {
-            if (!context.Accounts.Any())
+            if (!Context.Accounts.Any())
             {
-                context.Accounts.AddRange(
+                Context.Accounts.AddRange(
                 new Account()
                 {
                     Login = "user1", Password = "password1", FirstName = "Roman", LastName = "Savchenko",
@@ -54,98 +54,98 @@ namespace SoftwareCompany.DAL.Core.Data
                     Phone = "380688700610", Email = "lysenko@gmail.com", Skype = "lysenko", Type = AccountType.Customer
                 }
             );
-                context.SaveChanges();
+                Context.SaveChanges();
             }
 
-            if (!context.Teams.Any())
+            if (!Context.Teams.Any())
             {
-                context.Teams.AddRange(
+                Context.Teams.AddRange(
                     new Team()
                     {
                         Name = "ISTKM",
                         Description = "Clean Arch"
-                    }); context.SaveChanges();
+                    }); Context.SaveChanges();
             }
 
-            if (!context.Employees.Any())
+            if (!Context.Employees.Any())
             {
-                context.Employees.AddRange(
+                Context.Employees.AddRange(
                     new Employee()
                     {
-                        Account = context.Accounts.First(row => row.Login == "user1"),
+                        Account = Context.Accounts.First(row => row.Login == "user1"),
                         DateOfEmployment = DateTime.UtcNow,
-                        Team = context.Teams.First(row => row.Name == "ISTKM"),
+                        Team = Context.Teams.First(row => row.Name == "ISTKM"),
                         Position = "Developer",
                         Salary = 600
                     },
                     new Employee()
                     {
-                        Account = context.Accounts.First(row => row.Login == "user2"),
+                        Account = Context.Accounts.First(row => row.Login == "user2"),
                         DateOfEmployment = DateTime.UtcNow,
-                        Team = context.Teams.First(row => row.Name == "ISTKM"),
+                        Team = Context.Teams.First(row => row.Name == "ISTKM"),
                         Position = "Developer",
                         Salary = 600
-                    }); context.SaveChanges();
+                    }); Context.SaveChanges();
             }
 
-            if (!context.Companies.Any())
+            if (!Context.Companies.Any())
             {
-                context.Companies.AddRange(
+                Context.Companies.AddRange(
                     new Company() { Name = "Lysenko LTD", Description = "Games" },
                     new Company() { Name = "Perepelica LTD", Description = "Post system" }
-                ); context.SaveChanges();
+                ); Context.SaveChanges();
             }
 
-            if (!context.Customers.Any())
+            if (!Context.Customers.Any())
             {
-                context.Customers.AddRange(
+                Context.Customers.AddRange(
                     new Customer()
                     {
-                        Account = context.Accounts.First(row => row.Login == "user3"),
-                        Company = context.Companies.First(row => row.Name == "Perepelica LTD")
+                        Account = Context.Accounts.First(row => row.Login == "user3"),
+                        Company = Context.Companies.First(row => row.Name == "Perepelica LTD")
                     },
                     new Customer()
                     {
-                        Account = context.Accounts.First(row => row.Login == "user4"),
-                        Company = context.Companies.First(row => row.Name == "Lysenko LTD")
+                        Account = Context.Accounts.First(row => row.Login == "user4"),
+                        Company = Context.Companies.First(row => row.Name == "Lysenko LTD")
                     }
-                ); context.SaveChanges();
+                ); Context.SaveChanges();
             }
 
-            if (!context.Projects.Any())
+            if (!Context.Projects.Any())
             {
-                context.Projects.AddRange(
+                Context.Projects.AddRange(
                     new Project()
                     {
                         Title = "SoftwareCompany",
                         Description = "Course work",
-                        Customer = context.Customers.First(row => row.Company.Name == "Lysenko LTD"),
-                        Manager = context.Employees.First(row => row.Account.Login == "user1"),
+                        Customer = Context.Customers.First(row => row.Company.Name == "Lysenko LTD"),
+                        Manager = Context.Employees.First(row => row.Account.Login == "user1"),
                         StartTime = DateTime.Now,
                         EndTime = DateTime.Now.AddDays(24),
                         Type = ProjectType.Web,
                         Status = ProjectStatus.New,
-                        Team = context.Teams.First(row => row.Name == "ISTKM")
+                        Team = Context.Teams.First(row => row.Name == "ISTKM")
                     }
-                ); context.SaveChanges();
+                ); Context.SaveChanges();
             }
 
-            if (!context.Tasks.Any())
+            if (!Context.Tasks.Any())
             {
-                context.Tasks.AddRange(
+                Context.Tasks.AddRange(
 
                     new Task()
                     {
-                        Employee = context.Employees.First(row => row.Account.Login == "user2"),
+                        Employee = Context.Employees.First(row => row.Account.Login == "user2"),
                         Complexity = 24,
                         Deadline = DateTime.Now.AddDays(5),
                         Title = "Create Repository",
                         Description = "Create repository for Employee Table",
-                        Project = context.Projects.First(row => row.Title == "SoftwareCompany"),
+                        Project = Context.Projects.First(row => row.Title == "SoftwareCompany"),
                         Status = TaskStatus.Open
                     }
 
-                ); context.SaveChanges();
+                ); Context.SaveChanges();
             }
 
         }
