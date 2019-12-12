@@ -16,5 +16,29 @@ namespace SoftwareCompany.DAL.Core.Repository
             _context = context;
         }
 
+        public IEnumerable<Customer> GetCustomerList()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Customer GetCustomerById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CreateCustomer(Customer customer)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateCustomer(Customer customer)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteCustomer(Customer customer)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

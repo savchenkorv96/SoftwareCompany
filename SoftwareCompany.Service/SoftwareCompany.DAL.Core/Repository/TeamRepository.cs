@@ -16,5 +16,29 @@ namespace SoftwareCompany.DAL.Core.Repository
             _context = context;
         }
 
+        public IEnumerable<Team> GetTeamList()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Team GetTeamById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CreateTeam(Team team)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateTeam(Team team)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteTeam(Team team)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
