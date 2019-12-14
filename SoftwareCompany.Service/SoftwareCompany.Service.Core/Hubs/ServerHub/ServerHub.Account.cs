@@ -6,7 +6,6 @@ using SoftwareCompany.BLL.Core.Contract;
 using SoftwareCompany.BLL.DomainEvents.AccountEvents.LoginEvents;
 using SoftwareCompany.DAL.Common.Entities;
 using SoftwareCompany.Service.Core.Helpers;
-using Task = System.Threading.Tasks.Task;
 
 namespace SoftwareCompany.Service.Core.Hubs.ServerHub
 {

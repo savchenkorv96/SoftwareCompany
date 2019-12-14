@@ -134,7 +134,7 @@ namespace SoftwareCompany.DAL.Core.Data
             {
                 Context.Tasks.AddRange(
 
-                    new Task()
+                    new ProjectTask()
                     {
                         Employee = Context.Employees.First(row => row.Account.Login == "user2"),
                         Complexity = 24,
@@ -142,7 +142,8 @@ namespace SoftwareCompany.DAL.Core.Data
                         Title = "Create Repository",
                         Description = "Create repository for Employee Table",
                         Project = Context.Projects.First(row => row.Title == "SoftwareCompany"),
-                        Status = TaskStatus.Open
+                        Status = TaskStatus.Open,
+                        ActualTile = DateTime.Now
                     }
 
                 ); Context.SaveChanges();

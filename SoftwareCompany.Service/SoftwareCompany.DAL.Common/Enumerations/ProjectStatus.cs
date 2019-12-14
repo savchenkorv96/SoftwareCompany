@@ -6,6 +6,6 @@ namespace SoftwareCompany.DAL.Common.Enumerations
 {
     public enum ProjectStatus
     {
-        New,Open,Closed
+        New,Open,Finish,Closed
     }
 }

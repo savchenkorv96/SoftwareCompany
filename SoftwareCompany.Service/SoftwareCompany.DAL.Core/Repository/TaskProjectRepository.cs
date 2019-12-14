@@ -6,42 +6,42 @@ using SoftwareCompany.DAL.Core.Repository.Contract;
 
 namespace SoftwareCompany.DAL.Core.Repository
 {
-    public class TaskRepository : ITaskRepository
+    public class TaskProjectRepository : ITaskProjectRepository
     {
         private readonly ApplicationDbContext _context;
-        public IEnumerable<Task> Tasks => _context.Tasks;
+        public IEnumerable<ProjectTask> Tasks => _context.Tasks;
 
-        public TaskRepository(ApplicationDbContext context)
+        public TaskProjectRepository(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        public IEnumerable<Task> GetTaskList()
+        public IEnumerable<ProjectTask> GetTaskList()
         {
             throw new NotImplementedException();
         }
 
-        public Task GetTaskById(int id)
+        public ProjectTask GetTaskById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public void CreateTask(Task task)
+        public void CreateTask(ProjectTask task)
         {
             throw new NotImplementedException();
         }
 
-        public void UpdateTask(Task task)
+        public void UpdateTask(ProjectTask task)
         {
             throw new NotImplementedException();
         }
 
-        public void DeleteTask(Task task)
+        public void DeleteTask(ProjectTask task)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Task> GetTaskListByEmployeeId(int id)
+        public IEnumerable<ProjectTask> GetTaskListByEmployeeId(int id)
         {
             throw new NotImplementedException();
         }

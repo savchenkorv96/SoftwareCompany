@@ -5,7 +5,7 @@ using SoftwareCompany.DAL.Common.Enumerations;
 
 namespace SoftwareCompany.DAL.Common.Entities
 {
-    public class Task
+    public class ProjectTask
     {
         public int Id { get; set; }
         public string Title { get; set; }
@@ -15,5 +15,6 @@ namespace SoftwareCompany.DAL.Common.Entities
         public DateTime Deadline { get; set; }
         public double Complexity { get; set; }
         public TaskStatus Status { get; set; }
+        public DateTime ActualTile { get; set; }
     }
 }

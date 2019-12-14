@@ -14,7 +14,7 @@ namespace SoftwareCompany.DAL.Core
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Company> Companies { get; set; }
         public DbSet<Project> Projects { get; set; }
-        public DbSet<Task> Tasks { get; set; }
+        public DbSet<ProjectTask> Tasks { get; set; }
 
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {

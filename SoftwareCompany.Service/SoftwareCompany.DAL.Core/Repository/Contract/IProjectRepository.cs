@@ -15,5 +15,6 @@ namespace SoftwareCompany.DAL.Core.Repository.Contract
         void UpdateProject(Project project);
         void DeleteProject(Project project);
         IEnumerable<Project> GetProjectListByEmployeeId();
+        IEnumerable<Project> GetCountEmployeeByProjectId();
     }
 }

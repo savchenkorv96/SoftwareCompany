@@ -45,5 +45,10 @@ namespace SoftwareCompany.DAL.Core.Repository
         {
             throw new NotImplementedException();
         }
+
+        public IEnumerable<Project> GetCountEmployeeByProjectId()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
