@@ -16,7 +16,7 @@ namespace SoftwareCompany.BLL.Rules.Validation.Rules.AccountRule
         {
             ValidationResult validationResult = new ValidationResult();
 
-            if (phone == null || !phone.IsPhone())
+            if (phone == null || !phone.IsNumbers())
             {
                 string errorMessage = this.GetErrorMessage();
                 validationResult = new ValidationResult(false, errorMessage);
