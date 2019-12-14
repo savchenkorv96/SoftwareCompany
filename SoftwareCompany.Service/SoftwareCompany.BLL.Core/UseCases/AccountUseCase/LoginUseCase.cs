@@ -19,12 +19,6 @@ namespace SoftwareCompany.BLL.Core.UseCases.AccountUseCase
             this._loginValidationActivity = loginValidationActivity;
             this._request = request;
         }
-
-        /// <summary>
-        ///  Execute activities needed to log into the system
-        /// </summary>
-        /// <param name="request">EnterRequestEvent</param>
-        /// <returns>User</returns>
         public LoginResponseEvent Execute(LoginRequestEvent request)
         {
             try
