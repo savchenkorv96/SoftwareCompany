@@ -16,7 +16,7 @@ namespace SoftwareCompany.Service
         {
             return WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
-                .UseUrls("http://localhost:5001");
+                .UseUrls("http://localhost:8001");
         }
     }
 }

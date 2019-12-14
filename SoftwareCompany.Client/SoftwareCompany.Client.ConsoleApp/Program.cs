@@ -20,7 +20,7 @@ namespace SoftwareCompany.Client.ConsoleApp
         static async Task Run()
         {
             var connection = new HubConnectionBuilder()
-                .WithUrl("http://localhost:5001/ServerHub")
+                .WithUrl("http://localhost:8001/ServerHub")
                 .Build();
             //connection.On<string, string>("GetAccountByLoginAndPassword", (login, password) => { Console.WriteLine(login); });
 
