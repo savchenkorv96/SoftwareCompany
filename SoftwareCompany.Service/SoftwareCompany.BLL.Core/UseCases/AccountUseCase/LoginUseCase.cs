@@ -10,14 +10,14 @@ namespace SoftwareCompany.BLL.Core.UseCases.AccountUseCase
 {
     public class LoginUseCase : IUseCase<LoginRequestEvent, LoginResponseEvent>
     {
-        private IValidationActivity<LoginRequestEvent> loginValidationActivity;
+        private readonly IValidationActivity<LoginRequestEvent> _loginValidationActivity;
 
-        private IRequestActivity<LoginRequestEvent, LoginResponseEvent> request;
+        private readonly IRequestActivity<LoginRequestEvent, LoginResponseEvent> _request;
 
         public LoginUseCase(IValidationActivity<LoginRequestEvent> loginValidationActivity, IRequestActivity<LoginRequestEvent, LoginResponseEvent> request)
         {
-            this.loginValidationActivity = loginValidationActivity;
-            this.request = request;
+            this._loginValidationActivity = loginValidationActivity;
+            this._request = request;
         }
 
         /// <summary>
@@ -29,8 +29,8 @@ namespace SoftwareCompany.BLL.Core.UseCases.AccountUseCase
         {
             try
             {
-                loginValidationActivity.Validate(request);
-                return this.request.Execute(request);
+                _loginValidationActivity.Validate(request);
+                return this._request.Execute(request);
             }
             catch (SystemLoginValidationException ex)
             {

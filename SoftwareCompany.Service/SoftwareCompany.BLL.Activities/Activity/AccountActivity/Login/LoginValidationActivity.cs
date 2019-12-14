@@ -10,15 +10,15 @@ namespace SoftwareCompany.BLL.Activities.Activity.AccountActivity.Login
 {
     public class LoginValidationActivity : IValidationActivity<LoginRequestEvent>
     {
-        private ILoginOperationValidationRule loginOperationValidation;
+        private readonly ILoginOperationValidationRule _loginOperationValidation;
         public LoginValidationActivity(ILoginOperationValidationRule loginOperationValidationRule)
         {
-            this.loginOperationValidation = loginOperationValidationRule;
+            this._loginOperationValidation = loginOperationValidationRule;
         }
 
         public void Validate(LoginRequestEvent request)
         {
-            ValidationResult validationResult = loginOperationValidation.IsValid(request.Login, request.Password);
+            ValidationResult validationResult = _loginOperationValidation.IsValid(request.Login, request.Password);
 
             if (!validationResult.IsValid)
             {

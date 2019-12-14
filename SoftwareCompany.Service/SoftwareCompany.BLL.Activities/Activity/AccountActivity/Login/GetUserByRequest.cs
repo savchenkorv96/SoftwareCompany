@@ -11,19 +11,19 @@ namespace SoftwareCompany.BLL.Activities.Activity.AccountActivity.Login
 {
     class GetUserByRequest : IRequestActivity<LoginRequestEvent, LoginResponseEvent>
     {
-        private IAccountRepository accountRepository;
+        private readonly IAccountRepository _accountRepository;
         public GetUserByRequest(IAccountRepository accountRepository)
         {
-            this.accountRepository = accountRepository;
+            this._accountRepository = accountRepository;
         }
 
         public LoginResponseEvent Execute(LoginRequestEvent request)
         {
-            LoginResponseEvent response = null;
+            LoginResponseEvent response;
 
             try
             {
-                Account account = accountRepository.GetAccountByLoginAndPassword(request.Login, request.Password);
+                Account account = _accountRepository.GetAccountByLoginAndPassword(request.Login, request.Password);
                 response = new LoginResponseEvent(account);
             }
             catch (Exception ex)
