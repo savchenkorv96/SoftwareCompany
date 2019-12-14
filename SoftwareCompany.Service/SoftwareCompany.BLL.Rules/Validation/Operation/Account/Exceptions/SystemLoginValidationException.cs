@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SoftwareCompany.BLL.Rules.Validation.Operation.Account.Exceptions
 {
-    class SystemLoginValidationException : Exception
+    public class SystemLoginValidationException : Exception
     {
         public SystemLoginValidationException()
         {

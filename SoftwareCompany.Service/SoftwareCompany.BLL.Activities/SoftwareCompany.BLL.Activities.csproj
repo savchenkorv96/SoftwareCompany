@@ -1,7 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SoftwareCompany.BLL.DomainEvents\SoftwareCompany.BLL.DomainEvents.csproj" />
+    <ProjectReference Include="..\SoftwareCompany.BLL.Rules\SoftwareCompany.BLL.Rules.csproj" />
+    <ProjectReference Include="..\SoftwareCompany.DAL.Core\SoftwareCompany.DAL.Core.csproj" />
+  </ItemGroup>
 
 </Project>

@@ -1,7 +1,7 @@
-﻿
-namespace SoftwareCompany.BLL.DomainEvents.Account.LoginEvents
+﻿using SoftwareCompany.DAL.Common.Entities;
+
+namespace SoftwareCompany.BLL.DomainEvents.AccountEvents.LoginEvents
 {
-    using DAL.Common.Entities;
     public sealed class LoginResponseEvent
     {
         public Account Account { get; set; }
