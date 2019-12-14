@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 using SoftwareCompany.BLL.Rules.Base;
-using SoftwareCompany.BLL.Rules.Validation.Operation.Account.Contract;
-using SoftwareCompany.BLL.Rules.Validation.Rule.Account;
+using SoftwareCompany.BLL.Rules.Validation.Operations.AccountOperation.Contract;
+using SoftwareCompany.BLL.Rules.Validation.Rules.AccountRule;
+using SoftwareCompany.DAL.Common.Entities;
 
-namespace SoftwareCompany.BLL.Rules.Validation.Operation.Account
+namespace SoftwareCompany.BLL.Rules.Validation.Operations.AccountOperation
 {
     class LoginOperationValidationRule : ILoginOperationValidationRule
     {
@@ -28,7 +29,7 @@ namespace SoftwareCompany.BLL.Rules.Validation.Operation.Account
 
             return new ValidationResult(validationResultCollection);
         }
-
+        
         public ValidationResult ValidateLogin(string login)
         {
             return this.loginValidationRule.IsValid(login);
@@ -38,5 +39,6 @@ namespace SoftwareCompany.BLL.Rules.Validation.Operation.Account
         {
             return this.passwordValidationRule.IsValid(password);
         }
+
     }
 }

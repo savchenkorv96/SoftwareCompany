@@ -4,19 +4,19 @@ using System.Text;
 using SoftwareCompany.BLL.Rules.Base;
 using SoftwareCompany.BLL.Rules.Helpers;
 
-namespace SoftwareCompany.BLL.Rules.Validation.Rule.Account
+namespace SoftwareCompany.BLL.Rules.Validation.Rules.AccountRule
 {
-    public class PasswordValidationRule : ValidationRuleBase
+    class PhoneValidationRule : ValidationRuleBase
     {
-        public PasswordValidationRule() : base("Password must be a string composed of: letters, digits, _")
+        public PhoneValidationRule() : base("Your phone is not valid!")
         {
         }
 
-        public ValidationResult IsValid(string password)
+        public ValidationResult IsValid(string phone)
         {
             ValidationResult validationResult = new ValidationResult();
 
-            if (password == null || !password.IsStringWithNumbersAndUnderscores())
+            if (phone == null || !phone.IsPhone())
             {
                 string errorMessage = this.GetErrorMessage();
                 validationResult = new ValidationResult(false, errorMessage);

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SoftwareCompany.BLL.Rules.Validation.Operation.Account.Exceptions
+namespace SoftwareCompany.BLL.Rules.Validation.Operations.AccountOperation.Exceptions
 {
     public class SystemLoginValidationException : Exception
     {

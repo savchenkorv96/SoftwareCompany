@@ -119,5 +119,17 @@ namespace SoftwareCompany.BLL.Rules.Helpers
             bool isValid = Regex.IsMatch(value, pattern) && value.Length >= minLength && value.Length < maxLength;
             return isValid;
         }
+
+        public static bool IsEmail(this string value)
+        {
+            bool isValid = Regex.IsMatch(value, @"^[\w.-]+@(?=[a-z\d][^.]*\.)[a-z\d.-]*[^.]$");
+            return isValid;
+        }
+        
+        public static bool IsPhone(this string value)
+        {
+            bool isValid = Regex.IsMatch(value, @"^\+?(\d[\d-. ]+)?(\([\d-. ]+\))?[\d-. ]+\d$");
+            return isValid;
+        }
     }
 }

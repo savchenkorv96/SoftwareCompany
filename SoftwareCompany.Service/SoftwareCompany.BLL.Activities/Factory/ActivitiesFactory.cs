@@ -5,7 +5,7 @@ using SoftwareCompany.BLL.Activities.Activity.AccountActivity.Login;
 using SoftwareCompany.BLL.Activities.Contracts;
 using SoftwareCompany.BLL.DomainEvents.AccountEvents.LoginEvents;
 using SoftwareCompany.BLL.Rules.Contract;
-using SoftwareCompany.BLL.Rules.Validation.Operation.Account.Contract;
+using SoftwareCompany.BLL.Rules.Validation.Operations.AccountOperation.Contract;
 using SoftwareCompany.DAL.Core.Factory.Contract;
 using SoftwareCompany.DAL.Core.Repository.Contract;
 

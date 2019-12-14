@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using SoftwareCompany.BLL.Rules.Contract;
-using SoftwareCompany.BLL.Rules.Validation.Operation.Account;
-using SoftwareCompany.BLL.Rules.Validation.Operation.Account.Contract;
+using SoftwareCompany.BLL.Rules.Validation.Operations.AccountOperation;
+using SoftwareCompany.BLL.Rules.Validation.Operations.AccountOperation.Contract;
 
 namespace SoftwareCompany.BLL.Rules.Factory
 {

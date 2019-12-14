@@ -4,19 +4,19 @@ using System.Text;
 using SoftwareCompany.BLL.Rules.Base;
 using SoftwareCompany.BLL.Rules.Helpers;
 
-namespace SoftwareCompany.BLL.Rules.Validation.Rule.Account
+namespace SoftwareCompany.BLL.Rules.Validation.Rules.AccountRule
 {
-    class LoginValidationRule : ValidationRuleBase
+    class EmailValidationRule : ValidationRuleBase
     {
-        public LoginValidationRule() : base("Login must be a string composed of letters or digits.")
+        public EmailValidationRule() : base("Your email is not valid!")
         {
         }
 
-        public ValidationResult IsValid(string login)
+        public ValidationResult IsValid(string email)
         {
             ValidationResult validationResult = new ValidationResult();
 
-            if (login == null || !login.IsStringWithNumbers())
+            if (email == null || !email.IsEmail())
             {
                 string errorMessage = this.GetErrorMessage();
                 validationResult = new ValidationResult(false, errorMessage);

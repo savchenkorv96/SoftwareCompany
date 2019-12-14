@@ -3,8 +3,8 @@ using System.Text;
 using SoftwareCompany.BLL.Activities.Contracts;
 using SoftwareCompany.BLL.DomainEvents.AccountEvents.LoginEvents;
 using SoftwareCompany.BLL.Rules.Base;
-using SoftwareCompany.BLL.Rules.Validation.Operation.Account.Contract;
-using SoftwareCompany.BLL.Rules.Validation.Operation.Account.Exceptions;
+using SoftwareCompany.BLL.Rules.Validation.Operations.AccountOperation.Contract;
+using SoftwareCompany.BLL.Rules.Validation.Operations.AccountOperation.Exceptions;
 
 namespace SoftwareCompany.BLL.Activities.Activity.AccountActivity.Login
 {
