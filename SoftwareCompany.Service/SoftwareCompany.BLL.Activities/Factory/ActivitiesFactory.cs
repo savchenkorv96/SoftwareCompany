@@ -22,7 +22,7 @@ namespace SoftwareCompany.BLL.Activities.Factory
         {
             // Extension point of the factory
             this.ruleCollection.Add(typeof(IValidationActivity<LoginRequestEvent>), new LoginValidationActivity(validationRuleFactory.Create<ILoginOperationValidationRule>()));
-            this.ruleCollection.Add(typeof(IRequestActivity<LoginRequestEvent,LoginResponseEvent>), new GetUserByRequest(repositoryFactory.Create<IAccountRepository>()));
+            this.ruleCollection.Add(typeof(IRequestActivity<LoginRequestEvent,LoginResponseEvent>), new GetAccountByRequest(repositoryFactory.Create<IAccountRepository>()));
 
             this.ruleCollection.Add(typeof(IValidationActivity<CreateAccountRequestEvent>), new CreateAccountValidationActivity(validationRuleFactory.Create<ICreateAccountOperationValidationRule>()));
             this.ruleCollection.Add(typeof(IRequestActivity<CreateAccountRequestEvent, CreateAccountResponseEvent>), new CreateAccountByRequest(repositoryFactory.Create<IAccountRepository>()));
