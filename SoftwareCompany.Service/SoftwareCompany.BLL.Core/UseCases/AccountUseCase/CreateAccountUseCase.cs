@@ -28,7 +28,7 @@ namespace SoftwareCompany.BLL.Core.UseCases.AccountUseCase
             }
             catch (SystemLoginValidationException ex)
             {
-                throw new SystemLoginValidationException(ex.Message, ex);
+                throw new SystemCreateAccountValidationException(ex.Message, ex);
             }
             catch (MissingMemberException ex)
             {

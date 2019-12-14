@@ -29,7 +29,9 @@ namespace SoftwareCompany.BLL.Rules.Validation.Operations.AccountOperation
             List<ValidationResult> validationResultCollection = new List<ValidationResult>
             {
                 ValidateLogin(account.Login),
-                ValidatePassword(account.Password)
+                ValidatePassword(account.Password),
+                ValidateEmail(account.Email),
+                ValidatePhone(account.Phone)
             };
 
             return new ValidationResult(validationResultCollection);
