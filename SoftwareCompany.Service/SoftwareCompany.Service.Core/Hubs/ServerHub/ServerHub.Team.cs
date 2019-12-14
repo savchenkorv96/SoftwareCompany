@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SoftwareCompany.Core.Hubs.ServerHub
+namespace SoftwareCompany.Service.Core.Hubs.ServerHub
 {
     partial class ServerHub
     {

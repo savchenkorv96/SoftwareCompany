@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using SoftwareCompany.Core;
+using SoftwareCompany.Service.Core;
 
 namespace SoftwareCompany.Service
 {

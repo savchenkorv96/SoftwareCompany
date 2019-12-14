@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.SignalR;
-using SoftwareCompany.Core.Environment;
+using SoftwareCompany.Service.Core.Environment;
 
-namespace SoftwareCompany.Core.Hubs.ServerHub
+namespace SoftwareCompany.Service.Core.Hubs.ServerHub
 {
     public partial class ServerHub : Hub
     {

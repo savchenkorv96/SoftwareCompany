@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SoftwareCompany.Core.Helpers
+namespace SoftwareCompany.Service.Core.Helpers
 {
     public class OperationStatusInfo
     {

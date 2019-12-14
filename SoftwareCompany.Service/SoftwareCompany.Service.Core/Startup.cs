@@ -5,12 +5,12 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using SoftwareCompany.Core.Environment;
-using SoftwareCompany.Core.Hubs.ServerHub;
+using SoftwareCompany.Service.Core.Environment;
+using SoftwareCompany.Service.Core.Hubs.ServerHub;
 using SoftwareCompany.DAL.Core;
 using SoftwareCompany.DAL.Core.Data;
 
-namespace SoftwareCompany.Core
+namespace SoftwareCompany.Service.Core
 {
     public class Startup
     {
