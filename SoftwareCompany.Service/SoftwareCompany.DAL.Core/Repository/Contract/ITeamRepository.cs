@@ -5,15 +5,9 @@ using SoftwareCompany.DAL.Common.Entities;
 
 namespace SoftwareCompany.DAL.Core.Repository.Contract
 {
-    public interface ITeamRepository : IRepository
+    public interface ITeamRepository : IRepository<Team>
     {
         IEnumerable<Team> Teams { get; }
-
-        IEnumerable<Team> GetTeamList();
-        Team GetTeamById(int id);
-        void CreateTeam(Team team);
-        void UpdateTeam(Team team);
-        void DeleteTeam(Team team);
-
+        
     }
 }

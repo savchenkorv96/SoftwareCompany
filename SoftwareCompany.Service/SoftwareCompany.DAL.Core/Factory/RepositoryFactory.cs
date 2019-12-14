@@ -19,7 +19,7 @@ namespace SoftwareCompany.DAL.Core.Factory
             this._collection.Add(typeof(ITeamRepository), new TeamRepository(context));
             this._collection.Add(typeof(IEmployeeRepository), new EmployeeRepository(context));
             this._collection.Add(typeof(IProjectRepository), new ProjectRepository(context));
-            this._collection.Add(typeof(ITaskProjectRepository), new TaskProjectRepository(context));
+            this._collection.Add(typeof(IProjectTaskRepository), new ProjectTaskRepository(context));
         }
         public T Create<T>()
         {

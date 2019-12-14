@@ -17,33 +17,29 @@ namespace SoftwareCompany.DAL.Core.Repository
             _context = context;
         }
 
-        public IEnumerable<Company> GetCompanyList()
+        public IEnumerable<Company> GetAll()
         {
-            return Companies.ToList();
+            throw new NotImplementedException();
         }
 
-        public Company GetCompanyById(int id)
+        public Company GetById(Company data)
         {
-            return Companies.First((data) => data.Id == id);
+            throw new NotImplementedException();
         }
 
-        public void CreateCompany(Company company)
+        public void Create(Company data)
         {
-            _context.Companies.Add(company);
-            _context.SaveChanges();
+            throw new NotImplementedException();
         }
 
-        public void UpdateCompany(Company company)
+        public void Update(Company data)
         {
-            var oldCompany = GetCompanyById(company.Id);
-            oldCompany = company;
-            _context.SaveChanges();
+            throw new NotImplementedException();
         }
 
-        public void DeleteCompany(Company company)
+        public void Delete(Company data)
         {
-            _context.Companies.Remove(company);
-            _context.SaveChanges();
+            throw new NotImplementedException();
         }
     }
 }

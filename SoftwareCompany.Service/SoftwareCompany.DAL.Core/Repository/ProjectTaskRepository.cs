@@ -6,41 +6,15 @@ using SoftwareCompany.DAL.Core.Repository.Contract;
 
 namespace SoftwareCompany.DAL.Core.Repository
 {
-    public class TaskProjectRepository : ITaskProjectRepository
+    public class ProjectTaskRepository : IProjectTaskRepository
     {
         private readonly ApplicationDbContext _context;
         public IEnumerable<ProjectTask> Tasks => _context.Tasks;
 
-        public TaskProjectRepository(ApplicationDbContext context)
+        public ProjectTaskRepository(ApplicationDbContext context)
         {
             _context = context;
         }
-
-        public IEnumerable<ProjectTask> GetTaskList()
-        {
-            throw new NotImplementedException();
-        }
-
-        public ProjectTask GetTaskById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void CreateTask(ProjectTask task)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateTask(ProjectTask task)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DeleteTask(ProjectTask task)
-        {
-            throw new NotImplementedException();
-        }
-
         public IEnumerable<ProjectTask> GetTaskListByEmployeeId(int id)
         {
             throw new NotImplementedException();
@@ -57,6 +31,31 @@ namespace SoftwareCompany.DAL.Core.Repository
         }
 
         public int GetPercentSuccessTaskByProjectId(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<ProjectTask> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public ProjectTask GetById(ProjectTask data)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Create(ProjectTask data)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(ProjectTask data)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(ProjectTask data)
         {
             throw new NotImplementedException();
         }

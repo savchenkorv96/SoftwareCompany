@@ -16,27 +16,27 @@ namespace SoftwareCompany.DAL.Core.Repository
             _context = context;
         }
 
-        public IEnumerable<Employee> GetEmployeeList()
+        public IEnumerable<Employee> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public Customer GetEmployeeById(int id)
+        public Employee GetById(Employee data)
         {
             throw new NotImplementedException();
         }
 
-        public void CreateEmployee(Employee employee)
+        public void Create(Employee data)
         {
             throw new NotImplementedException();
         }
 
-        public void UpdateEmployee(Employee employee)
+        public void Update(Employee data)
         {
             throw new NotImplementedException();
         }
 
-        public void DeleteEmployee(Employee employee)
+        public void Delete(Employee data)
         {
             throw new NotImplementedException();
         }

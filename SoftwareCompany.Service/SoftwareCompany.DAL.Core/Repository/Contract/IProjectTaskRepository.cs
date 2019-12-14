@@ -5,17 +5,10 @@ using SoftwareCompany.DAL.Common.Entities;
 
 namespace SoftwareCompany.DAL.Core.Repository.Contract
 {
-    public interface ITaskProjectRepository : IRepository
+    public interface IProjectTaskRepository : IRepository<ProjectTask>
     {
         IEnumerable<ProjectTask> Tasks { get; }
-
-        IEnumerable<ProjectTask> GetTaskList();
-        ProjectTask GetTaskById(int id);
-
-        void CreateTask(ProjectTask task);
-        void UpdateTask(ProjectTask task);
-        void DeleteTask(ProjectTask task);
-
+        
         IEnumerable<ProjectTask> GetTaskListByEmployeeId(int id);
         int GetCountTaskByProjectId(int id);
         int GetCountSuccessTaskByProjectId(int id);

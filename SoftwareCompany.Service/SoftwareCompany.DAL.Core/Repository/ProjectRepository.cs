@@ -15,38 +15,38 @@ namespace SoftwareCompany.DAL.Core.Repository
         {
             _context = context;
         }
-
-        public IEnumerable<Project> GetProjectList()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Project GetProjectById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void CreateProject(Project project)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateProject(Project project)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DeleteProject(Project project)
-        {
-            throw new NotImplementedException();
-        }
-
+        
         public IEnumerable<Project> GetProjectListByEmployeeId()
         {
             throw new NotImplementedException();
         }
 
         public IEnumerable<Project> GetCountEmployeeByProjectId()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Project> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Project GetById(Project data)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Create(Project data)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(Project data)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(Project data)
         {
             throw new NotImplementedException();
         }

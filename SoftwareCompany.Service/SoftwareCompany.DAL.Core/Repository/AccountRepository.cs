@@ -22,33 +22,29 @@ namespace SoftwareCompany.DAL.Core.Repository
             return Accounts.First((data) => data.Login == login && data.Password == password);
         }
 
-        public IEnumerable<Account> GetAccountList()
+        public IEnumerable<Account> GetAll()
         {
-            return Accounts.ToList();
+            throw new NotImplementedException();
         }
 
-        public Account GetAccountById(int id)
+        public Account GetById(Account data)
         {
-            return Accounts.First((data) => data.Id == id);
+            throw new NotImplementedException();
         }
 
-        public void CreateAccount(Account account)
+        public void Create(Account data)
         {
-            _context.Accounts.Add(account);
-            _context.SaveChanges();
+            throw new NotImplementedException();
         }
 
-        public void UpdateAccount(Account account)
+        public void Update(Account data)
         {
-            var oldAccount = GetAccountById(account.Id);
-            oldAccount = account;
-            _context.SaveChanges();
+            throw new NotImplementedException();
         }
 
-        public void DeleteAccount(Account account)
+        public void Delete(Account data)
         {
-            _context.Accounts.Remove(account);
-            _context.SaveChanges();
+            throw new NotImplementedException();
         }
     }
 }

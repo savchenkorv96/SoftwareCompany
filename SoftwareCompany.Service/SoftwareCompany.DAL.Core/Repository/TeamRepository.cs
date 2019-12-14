@@ -16,27 +16,27 @@ namespace SoftwareCompany.DAL.Core.Repository
             _context = context;
         }
 
-        public IEnumerable<Team> GetTeamList()
+        public IEnumerable<Team> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public Team GetTeamById(int id)
+        public Team GetById(Team data)
         {
             throw new NotImplementedException();
         }
 
-        public void CreateTeam(Team team)
+        public void Create(Team data)
         {
             throw new NotImplementedException();
         }
 
-        public void UpdateTeam(Team team)
+        public void Update(Team data)
         {
             throw new NotImplementedException();
         }
 
-        public void DeleteTeam(Team team)
+        public void Delete(Team data)
         {
             throw new NotImplementedException();
         }
