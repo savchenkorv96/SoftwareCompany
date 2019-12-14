@@ -8,7 +8,7 @@ namespace SoftwareCompany.BLL.Rules.Validation.Operations.AccountOperation.Contr
 {
     public interface ILoginOperationValidationRule
     {
-        ValidationResult IsValid(Account account);
+        ValidationResult IsValid(string login, string password);
         ValidationResult ValidateLogin(string login);
         ValidationResult ValidatePassword(string password);
     }

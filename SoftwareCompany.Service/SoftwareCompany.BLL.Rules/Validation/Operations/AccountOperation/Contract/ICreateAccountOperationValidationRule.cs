@@ -6,7 +6,7 @@ using SoftwareCompany.DAL.Common.Entities;
 
 namespace SoftwareCompany.BLL.Rules.Validation.Operations.AccountOperation.Contract
 {
-    interface ICreateAccountOperationValidationRule
+    public interface ICreateAccountOperationValidationRule
     {
         ValidationResult IsValid(Account account);
         ValidationResult ValidateLogin(string login);

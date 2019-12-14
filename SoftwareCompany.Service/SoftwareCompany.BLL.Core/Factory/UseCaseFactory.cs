@@ -4,6 +4,7 @@ using System.Text;
 using SoftwareCompany.BLL.Activities.Contracts;
 using SoftwareCompany.BLL.Core.Contract;
 using SoftwareCompany.BLL.Core.UseCases.AccountUseCase;
+using SoftwareCompany.BLL.DomainEvents.AccountEvents.CreateAccountEvents;
 using SoftwareCompany.BLL.DomainEvents.AccountEvents.LoginEvents;
 
 namespace SoftwareCompany.BLL.Core.Factory
@@ -19,7 +20,11 @@ namespace SoftwareCompany.BLL.Core.Factory
                 new LoginUseCase(activitiesFactory.Create<IValidationActivity<LoginRequestEvent>>(),
                     activitiesFactory.Create<IRequestActivity<LoginRequestEvent, LoginResponseEvent>>()));
 
-            }
+            this.collection.Add(typeof(IUseCase<CreateAccountRequestEvent, CreateAccountResponseEvent>),
+                new CreateAccountUseCase(activitiesFactory.Create<IValidationActivity<CreateAccountRequestEvent>>(),
+                    activitiesFactory.Create<IRequestActivity<CreateAccountRequestEvent, CreateAccountResponseEvent>>()));
+
+        }
 
         public T Create<T>()
         {

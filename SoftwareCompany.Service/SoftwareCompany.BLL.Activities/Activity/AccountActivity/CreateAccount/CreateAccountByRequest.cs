@@ -4,6 +4,7 @@ using System.Text;
 using SoftwareCompany.BLL.Activities.Contracts;
 using SoftwareCompany.BLL.DomainEvents.AccountEvents.CreateAccountEvents;
 using SoftwareCompany.BLL.DomainEvents.AccountEvents.LoginEvents;
+using SoftwareCompany.DAL.Common.Entities;
 using SoftwareCompany.DAL.Core.Repository.Contract;
 
 namespace SoftwareCompany.BLL.Activities.Activity.AccountActivity.CreateAccount
@@ -18,7 +19,19 @@ namespace SoftwareCompany.BLL.Activities.Activity.AccountActivity.CreateAccount
 
         public CreateAccountResponseEvent Execute(CreateAccountRequestEvent request)
         {
-            throw new NotImplementedException();
+            CreateAccountResponseEvent response;
+
+            try
+            {
+                Account account = _accountRepository.Create(request.Account);
+                response = new CreateAccountResponseEvent(account);
+            }
+            catch (Exception ex)
+            {
+                throw new MissingMemberException("Unable to create account", ex);
+            }
+
+            return response;
         }
     }
 }

@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using SoftwareCompany.BLL.Activities.Activity.AccountActivity.CreateAccount;
 using SoftwareCompany.BLL.Activities.Activity.AccountActivity.Login;
 using SoftwareCompany.BLL.Activities.Contracts;
+using SoftwareCompany.BLL.DomainEvents.AccountEvents.CreateAccountEvents;
 using SoftwareCompany.BLL.DomainEvents.AccountEvents.LoginEvents;
 using SoftwareCompany.BLL.Rules.Contract;
+using SoftwareCompany.BLL.Rules.Validation.Operations.AccountOperation;
 using SoftwareCompany.BLL.Rules.Validation.Operations.AccountOperation.Contract;
 using SoftwareCompany.DAL.Core.Factory.Contract;
 using SoftwareCompany.DAL.Core.Repository.Contract;
@@ -21,6 +24,8 @@ namespace SoftwareCompany.BLL.Activities.Factory
             this.ruleCollection.Add(typeof(IValidationActivity<LoginRequestEvent>), new LoginValidationActivity(validationRuleFactory.Create<ILoginOperationValidationRule>()));
             this.ruleCollection.Add(typeof(IRequestActivity<LoginRequestEvent,LoginResponseEvent>), new GetUserByRequest(repositoryFactory.Create<IAccountRepository>()));
 
+            this.ruleCollection.Add(typeof(IValidationActivity<CreateAccountRequestEvent>), new CreateAccountValidationActivity(validationRuleFactory.Create<ICreateAccountOperationValidationRule>()));
+            this.ruleCollection.Add(typeof(IRequestActivity<CreateAccountRequestEvent, CreateAccountResponseEvent>), new CreateAccountByRequest(repositoryFactory.Create<IAccountRepository>()));
         }
 
         public T Create<T>()
