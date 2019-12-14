@@ -7,11 +7,11 @@ namespace SoftwareCompany.BLL.DomainEvents.AccountEvents.CreateAccountEvents
 {
     public class CreateAccountResponseEvent
     {
-        public Account Account { get; set; }
+        public bool Status { get; set; }
 
-        public CreateAccountResponseEvent(Account account)
+        public CreateAccountResponseEvent(bool status)
         {
-            this.Account = account;
+            this.Status = status;
         }
     }
 }

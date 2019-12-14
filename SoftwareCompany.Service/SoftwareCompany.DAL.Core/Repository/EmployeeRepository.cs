@@ -26,12 +26,12 @@ namespace SoftwareCompany.DAL.Core.Repository
             throw new NotImplementedException();
         }
 
-        public Employee Create(Employee data)
+        public bool Create(Employee data)
         {
             throw new NotImplementedException();
         }
 
-        public Employee Update(Employee data)
+        public bool Update(Employee data)
         {
             throw new NotImplementedException();
         }

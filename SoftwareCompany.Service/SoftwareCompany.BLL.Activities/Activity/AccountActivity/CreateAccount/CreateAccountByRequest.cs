@@ -23,8 +23,8 @@ namespace SoftwareCompany.BLL.Activities.Activity.AccountActivity.CreateAccount
 
             try
             {
-                Account account = _accountRepository.Create(request.Account);
-                response = new CreateAccountResponseEvent(account);
+                bool status = _accountRepository.Create(request.Account);
+                response = new CreateAccountResponseEvent(status);
             }
             catch (Exception ex)
             {

@@ -32,12 +32,14 @@ namespace SoftwareCompany.DAL.Core.Repository
             throw new NotImplementedException();
         }
 
-        public Account Create(Account data)
+        public bool Create(Account data)
         {
-            throw new NotImplementedException();
+            _context.Accounts.Add(data);
+            _context.SaveChanges();
+            return true;
         }
 
-        public Account Update(Account data)
+        public bool Update(Account data)
         {
             throw new NotImplementedException();
         }

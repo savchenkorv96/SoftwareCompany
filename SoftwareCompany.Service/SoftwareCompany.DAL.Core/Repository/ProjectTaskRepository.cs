@@ -45,12 +45,12 @@ namespace SoftwareCompany.DAL.Core.Repository
             throw new NotImplementedException();
         }
 
-        public ProjectTask Create(ProjectTask data)
+        public bool Create(ProjectTask data)
         {
             throw new NotImplementedException();
         }
 
-        public ProjectTask Update(ProjectTask data)
+        public bool Update(ProjectTask data)
         {
             throw new NotImplementedException();
         }

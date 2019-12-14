@@ -9,8 +9,8 @@ namespace SoftwareCompany.DAL.Core.Repository.Contract
     {
         IEnumerable<T> GetAll();
         T GetById(T data);
-        T Create(T data);
-        T Update(T data);
+        bool Create(T data);
+        bool Update(T data);
         bool Delete(T data);
     }
 }
