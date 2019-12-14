@@ -3,6 +3,9 @@ using System;
 using System.Security.Cryptography;
 using System.Threading;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using SoftwareCompany.Client.Common.Entities;
+using SoftwareCompany.Client.Common.Helpers;
 
 namespace SoftwareCompany.Client.ConsoleApp
 {
@@ -23,7 +26,12 @@ namespace SoftwareCompany.Client.ConsoleApp
 
             await connection.StartAsync();
 
-           await connection.InvokeCoreAsync("Login", new object[] {"user1", "password1"});
+           await connection.InvokeCoreAsync<OperationStatusInfo>("Login", new object[] {"user1", "password1"}).ContinueWith(
+               (data) =>
+               {
+                   var account = JsonConvert.DeserializeObject<Account>(data.Result.AttachedObject.ToString());
+                   Console.WriteLine($"{account.Id}\t{account.Login}\t{account.Password}");
+               });
 
 
 
