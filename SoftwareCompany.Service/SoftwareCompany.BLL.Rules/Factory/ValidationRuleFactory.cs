@@ -15,6 +15,7 @@ namespace SoftwareCompany.BLL.Rules.Factory
         {
             // Extension point of the factory
             this.ruleCollection.Add(typeof(ILoginOperationValidationRule), new LoginOperationValidationRule());
+            this.ruleCollection.Add(typeof(ICreateAccountOperationValidationRule), new CreateAccountOperationValidationRule());
         }
 
         public T Create<T>()

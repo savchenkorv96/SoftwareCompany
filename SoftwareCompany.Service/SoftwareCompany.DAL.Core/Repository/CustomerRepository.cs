@@ -26,17 +26,17 @@ namespace SoftwareCompany.DAL.Core.Repository
             throw new NotImplementedException();
         }
 
-        public void Create(Customer data)
+        public Customer Create(Customer data)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(Customer data)
+        public Customer Update(Customer data)
         {
             throw new NotImplementedException();
         }
 
-        public void Delete(Customer data)
+        public bool Delete(Customer data)
         {
             throw new NotImplementedException();
         }

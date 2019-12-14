@@ -32,17 +32,17 @@ namespace SoftwareCompany.DAL.Core.Repository
             throw new NotImplementedException();
         }
 
-        public void Create(Account data)
+        public Account Create(Account data)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(Account data)
+        public Account Update(Account data)
         {
             throw new NotImplementedException();
         }
 
-        public void Delete(Account data)
+        public bool Delete(Account data)
         {
             throw new NotImplementedException();
         }

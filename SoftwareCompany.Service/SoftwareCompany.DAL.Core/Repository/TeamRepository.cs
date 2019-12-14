@@ -26,17 +26,17 @@ namespace SoftwareCompany.DAL.Core.Repository
             throw new NotImplementedException();
         }
 
-        public void Create(Team data)
+        public Team Create(Team data)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(Team data)
+        public Team Update(Team data)
         {
             throw new NotImplementedException();
         }
 
-        public void Delete(Team data)
+        public bool Delete(Team data)
         {
             throw new NotImplementedException();
         }

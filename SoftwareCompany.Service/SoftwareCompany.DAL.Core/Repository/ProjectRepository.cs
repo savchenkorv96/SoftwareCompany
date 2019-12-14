@@ -36,17 +36,17 @@ namespace SoftwareCompany.DAL.Core.Repository
             throw new NotImplementedException();
         }
 
-        public void Create(Project data)
+        public Project Create(Project data)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(Project data)
+        public Project Update(Project data)
         {
             throw new NotImplementedException();
         }
 
-        public void Delete(Project data)
+        public bool Delete(Project data)
         {
             throw new NotImplementedException();
         }

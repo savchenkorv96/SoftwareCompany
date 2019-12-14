@@ -19,12 +19,12 @@ namespace SoftwareCompany.BLL.Rules.Validation.Operations.AccountOperation
             this.loginValidationRule = new LoginValidationRule();
         }
 
-        public ValidationResult IsValid(string login, string password)
+        public ValidationResult IsValid(Account account)
         {
             List<ValidationResult> validationResultCollection = new List<ValidationResult>
             {
-                ValidateLogin(login),
-                ValidatePassword(password)
+                ValidateLogin(account.Login),
+                ValidatePassword(account.Password)
             };
 
             return new ValidationResult(validationResultCollection);

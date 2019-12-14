@@ -6,10 +6,12 @@ using SoftwareCompany.DAL.Common.Entities;
 
 namespace SoftwareCompany.BLL.Rules.Validation.Operations.AccountOperation.Contract
 {
-    public interface ILoginOperationValidationRule
+    interface ICreateAccountOperationValidationRule
     {
         ValidationResult IsValid(Account account);
         ValidationResult ValidateLogin(string login);
         ValidationResult ValidatePassword(string password);
+        ValidationResult ValidateEmail(string email);
+        ValidationResult ValidatePhone(string phone);
     }
 }
