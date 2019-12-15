@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.SignalR.Client;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Threading;
 using System.Threading.Tasks;
@@ -50,19 +52,36 @@ namespace SoftwareCompany.Client.ConsoleApp
             //   });
 
 
-            await connection.InvokeCoreAsync<OperationStatusInfo>("GetAccountById", new object[] { 13 }).ContinueWith(
-                (data) =>
-                {
-                    if (data.Result.OperationStatus == OperationStatus.Done)
-                    {
-                        var account = JsonConvert.DeserializeObject<Account>(data.Result.AttachedObject.ToString());
-                        Console.WriteLine($"{account.Id}\t{account.Login}\t{account.Password}");
-                    }
-                    else
-                    {
-                        Console.WriteLine(data.Result.AttachedInfo);
-                    }
-                });
+            //await connection.InvokeCoreAsync<OperationStatusInfo>("GetAccountById", new object[] { 13 }).ContinueWith(
+            //    (data) =>
+            //    {
+            //        if (data.Result.OperationStatus == OperationStatus.Done)
+            //        {
+            //            var account = JsonConvert.DeserializeObject<Account>(data.Result.AttachedObject.ToString());
+            //            Console.WriteLine($"{account.Id}\t{account.Login}\t{account.Password}");
+            //        }
+            //        else
+            //        {
+            //            Console.WriteLine(data.Result.AttachedInfo);
+            //        }
+            //    });
+
+            //await connection.InvokeCoreAsync<OperationStatusInfo>("GetAllAccount", new object[]{}).ContinueWith(
+            //    (data) =>
+            //    {
+            //        if (data.Result.OperationStatus == OperationStatus.Done)
+            //        {
+            //            IEnumerable<Account> account = JsonConvert.DeserializeObject<IEnumerable<Account>>(data.Result.AttachedObject.ToString());
+            //            foreach (var VARIABLE in account)
+            //            {
+            //                Console.WriteLine($"{VARIABLE.Id}\t{VARIABLE.Login}\t{VARIABLE.Password}");
+            //            }
+            //        }
+            //        else
+            //        {
+            //            Console.WriteLine(data.Result.AttachedInfo);
+            //        }
+            //    });
 
 
         }

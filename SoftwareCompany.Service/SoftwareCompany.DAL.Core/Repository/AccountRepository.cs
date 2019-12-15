@@ -24,7 +24,7 @@ namespace SoftwareCompany.DAL.Core.Repository
 
         public IEnumerable<Account> GetAll()
         {
-            throw new NotImplementedException();
+            return Accounts.ToList();
         }
 
         public Account GetById(int id)
