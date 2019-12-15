@@ -21,7 +21,7 @@ namespace SoftwareCompany.DAL.Core.Repository
             throw new NotImplementedException();
         }
 
-        public Team GetById(Team data)
+        public Team GetById(int id)
         {
             throw new NotImplementedException();
         }

@@ -27,9 +27,9 @@ namespace SoftwareCompany.DAL.Core.Repository
             throw new NotImplementedException();
         }
 
-        public Account GetById(Account data)
+        public Account GetById(int id)
         {
-            throw new NotImplementedException();
+            return Accounts.First((data) => data.Id == id);
         }
 
         public bool Create(Account data)

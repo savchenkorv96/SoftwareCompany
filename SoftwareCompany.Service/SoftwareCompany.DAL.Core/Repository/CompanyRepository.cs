@@ -22,7 +22,7 @@ namespace SoftwareCompany.DAL.Core.Repository
             throw new NotImplementedException();
         }
 
-        public Company GetById(Company data)
+        public Company GetById(int id)
         {
             throw new NotImplementedException();
         }

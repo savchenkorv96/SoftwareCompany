@@ -40,7 +40,7 @@ namespace SoftwareCompany.DAL.Core.Repository
             throw new NotImplementedException();
         }
 
-        public ProjectTask GetById(ProjectTask data)
+        public ProjectTask GetById(int id)
         {
             throw new NotImplementedException();
         }

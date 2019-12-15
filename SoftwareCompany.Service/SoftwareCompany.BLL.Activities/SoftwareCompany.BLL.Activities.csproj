@@ -10,8 +10,4 @@
     <ProjectReference Include="..\SoftwareCompany.DAL.Core\SoftwareCompany.DAL.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Activity\AccountActivity\GetAccount\" />
-  </ItemGroup>
-
 </Project>

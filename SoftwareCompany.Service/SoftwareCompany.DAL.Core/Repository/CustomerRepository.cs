@@ -21,7 +21,7 @@ namespace SoftwareCompany.DAL.Core.Repository
             throw new NotImplementedException();
         }
 
-        public Customer GetById(Customer data)
+        public Customer GetById(int id)
         {
             throw new NotImplementedException();
         }

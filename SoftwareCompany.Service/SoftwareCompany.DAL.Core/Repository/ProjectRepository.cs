@@ -16,12 +16,12 @@ namespace SoftwareCompany.DAL.Core.Repository
             _context = context;
         }
         
-        public IEnumerable<Project> GetProjectListByEmployeeId()
+        public IEnumerable<Project> GetProjectListByEmployeeId(int id)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Project> GetCountEmployeeByProjectId()
+        public IEnumerable<Project> GetCountEmployeeByProjectId(int id)
         {
             throw new NotImplementedException();
         }
@@ -31,7 +31,7 @@ namespace SoftwareCompany.DAL.Core.Repository
             throw new NotImplementedException();
         }
 
-        public Project GetById(Project data)
+        public Project GetById(int id)
         {
             throw new NotImplementedException();
         }

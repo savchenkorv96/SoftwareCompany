@@ -21,7 +21,7 @@ namespace SoftwareCompany.DAL.Core.Repository
             throw new NotImplementedException();
         }
 
-        public Employee GetById(Employee data)
+        public Employee GetById(int id)
         {
             throw new NotImplementedException();
         }
