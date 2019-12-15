@@ -8,6 +8,11 @@ using SoftwareCompany.BLL.Activities.Activity.AccountActivity.Login;
 using SoftwareCompany.BLL.Activities.Activity.EmployeeActivity.CreateEmployee;
 using SoftwareCompany.BLL.Activities.Activity.EmployeeActivity.GetAllEmployee;
 using SoftwareCompany.BLL.Activities.Activity.EmployeeActivity.GetEmployee;
+using SoftwareCompany.BLL.Activities.Activity.ProjectActivity.CreateProject;
+using SoftwareCompany.BLL.Activities.Activity.ProjectActivity.GetAllProject;
+using SoftwareCompany.BLL.Activities.Activity.ProjectActivity.GetProjectById;
+using SoftwareCompany.BLL.Activities.Activity.ProjectActivity.GetProjectByTeamId;
+using SoftwareCompany.BLL.Activities.Activity.ProjectActivity.UpdateProject;
 using SoftwareCompany.BLL.Activities.Activity.TeamActivity.CreateTeam;
 using SoftwareCompany.BLL.Activities.Activity.TeamActivity.GetAllTeam;
 using SoftwareCompany.BLL.Activities.Activity.TeamActivity.GetTeam;
@@ -20,6 +25,11 @@ using SoftwareCompany.BLL.DomainEvents.EmployeeEvents.CreateEmployeeEvents;
 using SoftwareCompany.BLL.DomainEvents.EmployeeEvents.GetAllEmployeeEvents;
 using SoftwareCompany.BLL.DomainEvents.EmployeeEvents.GetEmployeeByAccountIdEvents;
 using SoftwareCompany.BLL.DomainEvents.EmployeeEvents.GetEmployeeByIdEvents;
+using SoftwareCompany.BLL.DomainEvents.ProjectEvents.CreateProjectEvent;
+using SoftwareCompany.BLL.DomainEvents.ProjectEvents.GetAllProjectEvent;
+using SoftwareCompany.BLL.DomainEvents.ProjectEvents.GetProjectByIdEvent;
+using SoftwareCompany.BLL.DomainEvents.ProjectEvents.GetProjectListByTeamIdEvent;
+using SoftwareCompany.BLL.DomainEvents.ProjectEvents.UpdateProjectEvent;
 using SoftwareCompany.BLL.DomainEvents.TeamEvents.CreateTeamEvent;
 using SoftwareCompany.BLL.DomainEvents.TeamEvents.GetAllTemEvent;
 using SoftwareCompany.BLL.DomainEvents.TeamEvents.GetTeamByIdEvent;
@@ -60,6 +70,14 @@ namespace SoftwareCompany.BLL.Activities.Factory
                 new GetTeamById(repositoryFactory.Create<ITeamRepository>()));
             this.ruleCollection.Add(typeof(IRequestActivity<GetAllTeamRequestEvent, GetAllTeamResponseEvent>),
                 new GetAllTeamByRequest(repositoryFactory.Create<ITeamRepository>()));
+
+            this.ruleCollection.Add(typeof(IRequestActivity<CreateProjectRequestEvent, CreateProjectResponseEvent>), new CreateProjectByRequest(repositoryFactory.Create<IProjectRepository>()));
+            this.ruleCollection.Add(typeof(IRequestActivity<UpdateProjectRequestEvent, UpdateProjectResponseEvent>), new UpdateProjectByRequest(repositoryFactory.Create<IProjectRepository>()));
+            this.ruleCollection.Add(typeof(IRequestActivity<GetAllProjectRequestEvent, GetAllProjectResponseEvent>), new GetAllProjectByRequest(repositoryFactory.Create<IProjectRepository>()));
+            this.ruleCollection.Add(typeof(IRequestActivity<GetProjectByIdRequestEvent, GetProjectByIdResponseEvent>), new GetProjectById(repositoryFactory.Create<IProjectRepository>()));
+            this.ruleCollection.Add(typeof(IRequestActivity<GetProjectByTeamIdRequestEvent, GetProjectByTeamIdResponseEvent>), new GetProjectByTeamId(repositoryFactory.Create<IProjectRepository>()));
+
+
         }
 
         public T Create<T>()

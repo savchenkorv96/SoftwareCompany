@@ -23,15 +23,11 @@ namespace SoftwareCompany.DAL.Core.Repository
             _context = context;
         }
         
-        public IEnumerable<Project> GetProjectListByEmployeeId(int id)
+        public IEnumerable<Project> GetProjectListByTeamId(int id)
         {
-            throw new NotImplementedException();
+            return Projects.Where(data => data.Team.Id == id);
         }
 
-        public int GetCountEmployeeByProjectId(int id)
-        {
-            throw new NotImplementedException();
-        }
 
         public IEnumerable<Project> GetAll()
         {

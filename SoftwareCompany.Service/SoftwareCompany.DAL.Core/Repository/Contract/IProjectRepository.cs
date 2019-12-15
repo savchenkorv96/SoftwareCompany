@@ -9,7 +9,6 @@ namespace SoftwareCompany.DAL.Core.Repository.Contract
     {
         IEnumerable<Project> Projects { get; }
 
-        IEnumerable<Project> GetProjectListByEmployeeId(int id);
-        int GetCountEmployeeByProjectId(int id);
+        IEnumerable<Project> GetProjectListByTeamId(int id);
     }
 }
