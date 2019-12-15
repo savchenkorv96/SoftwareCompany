@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Text;
 using SoftwareCompany.BLL.Activities.Activity.AccountActivity.CreateAccount;
 using SoftwareCompany.BLL.Activities.Activity.AccountActivity.GetAccount;
+using SoftwareCompany.BLL.Activities.Activity.AccountActivity.GetAllAccount;
 using SoftwareCompany.BLL.Activities.Activity.AccountActivity.Login;
 using SoftwareCompany.BLL.Activities.Contracts;
 using SoftwareCompany.BLL.DomainEvents.AccountEvents.CreateAccountEvents;
 using SoftwareCompany.BLL.DomainEvents.AccountEvents.GetAccountByIdEvents;
+using SoftwareCompany.BLL.DomainEvents.AccountEvents.GetAllAccountEvents;
 using SoftwareCompany.BLL.DomainEvents.AccountEvents.LoginEvents;
 using SoftwareCompany.BLL.Rules.Contract;
 using SoftwareCompany.BLL.Rules.Validation.Operations.AccountOperation;
@@ -30,6 +32,7 @@ namespace SoftwareCompany.BLL.Activities.Factory
             this.ruleCollection.Add(typeof(IRequestActivity<CreateAccountRequestEvent, CreateAccountResponseEvent>), new CreateAccountByRequest(repositoryFactory.Create<IAccountRepository>()));
 
             this.ruleCollection.Add(typeof(IRequestActivity<GetAccountByIdRequestEvent, GetAccountByIdResponseEvent>), new GetAccountById(repositoryFactory.Create<IAccountRepository>()));
+            this.ruleCollection.Add(typeof(IRequestActivity<GetAllAccountRequestEvent, GetAllAccountResponseEvent>), new GetAllAccountByRequest(repositoryFactory.Create<IAccountRepository>()));
 
         }
 
