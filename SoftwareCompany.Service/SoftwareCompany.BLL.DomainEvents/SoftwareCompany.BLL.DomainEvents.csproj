@@ -8,4 +8,12 @@
     <ProjectReference Include="..\SoftwareCompany.DAL.Common\SoftwareCompany.DAL.Common.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ProjectEvents\CreateProjectEvent\" />
+    <Folder Include="ProjectEvents\GetProjectByIdEvent\" />
+    <Folder Include="ProjectEvents\GetAllProjectEvent\" />
+    <Folder Include="ProjectEvents\UpdateProjectEvent\" />
+    <Folder Include="ProjectEvents\GetProjectListByEmployeeIdEvent\" />
+  </ItemGroup>
+
 </Project>

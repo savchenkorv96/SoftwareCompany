@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using Microsoft.EntityFrameworkCore;
 using SoftwareCompany.DAL.Common.Entities;
 using SoftwareCompany.DAL.Core.Repository.Contract;
 
@@ -9,7 +11,12 @@ namespace SoftwareCompany.DAL.Core.Repository
     public class ProjectRepository : IProjectRepository
     {
         private readonly ApplicationDbContext _context;
-        public IEnumerable<Project> Projects => _context.Projects;
+
+        public IEnumerable<Project> Projects =>
+            _context.Set<Project>().Include(x => x.Team)
+                .Include(x => x.Customer)
+                .Include(x => x.Manager)
+                .ToList();
 
         public ProjectRepository(ApplicationDbContext context)
         {
@@ -21,29 +28,34 @@ namespace SoftwareCompany.DAL.Core.Repository
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Project> GetCountEmployeeByProjectId(int id)
+        public int GetCountEmployeeByProjectId(int id)
         {
             throw new NotImplementedException();
         }
 
         public IEnumerable<Project> GetAll()
         {
-            throw new NotImplementedException();
+            return Projects.ToList();
         }
 
         public Project GetById(int id)
         {
-            throw new NotImplementedException();
+            return Projects.First((data) => data.Id == id);
         }
 
         public bool Create(Project data)
         {
-            throw new NotImplementedException();
+            _context.Projects.Add(data);
+            _context.SaveChanges();
+            return true;
         }
 
         public bool Update(Project data)
         {
-            throw new NotImplementedException();
+            Project oldProject = Projects.First((row) => row.Id == data.Id);
+            oldProject = data;
+            return true;
+
         }
 
         public bool Delete(Project data)
