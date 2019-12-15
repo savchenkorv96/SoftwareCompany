@@ -12,6 +12,5 @@ namespace SoftwareCompany.DAL.Core.Repository.Contract
         IEnumerable<ProjectTask> GetTaskListByEmployeeId(int id);
         int GetCountTaskByProjectId(int id);
         int GetCountSuccessTaskByProjectId(int id);
-        int GetPercentSuccessTaskByProjectId(int id);
     }
 }

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using SoftwareCompany.DAL.Common.Entities;
+using SoftwareCompany.DAL.Common.Enumerations;
 using SoftwareCompany.DAL.Core.Repository.Contract;
 
 namespace SoftwareCompany.DAL.Core.Repository
@@ -17,32 +19,27 @@ namespace SoftwareCompany.DAL.Core.Repository
         }
         public IEnumerable<ProjectTask> GetTaskListByEmployeeId(int id)
         {
-            throw new NotImplementedException();
+            return Tasks.Where((data) => data.Employee.Id == id);
         }
 
         public int GetCountTaskByProjectId(int id)
         {
-            throw new NotImplementedException();
+            return Tasks.Count((data) => data.Project.Id == id);
         }
 
         public int GetCountSuccessTaskByProjectId(int id)
         {
-            throw new NotImplementedException();
+            return Tasks.Count((data) => data.Project.Id == id && data.Project.Status == ProjectStatus.Finish);
         }
-
-        public int GetPercentSuccessTaskByProjectId(int id)
-        {
-            throw new NotImplementedException();
-        }
-
+        
         public IEnumerable<ProjectTask> GetAll()
         {
-            throw new NotImplementedException();
+            return Tasks.ToList();
         }
 
         public ProjectTask GetById(int id)
         {
-            throw new NotImplementedException();
+            return Tasks.First((data) => data.Id == id);
         }
 
         public bool Create(ProjectTask data)
