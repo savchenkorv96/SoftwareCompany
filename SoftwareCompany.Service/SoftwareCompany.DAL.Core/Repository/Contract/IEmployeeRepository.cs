@@ -10,6 +10,7 @@ namespace SoftwareCompany.DAL.Core.Repository.Contract
         IEnumerable<Employee> Employees { get; }
 
         Employee GetEmployeeByAccountId(int id);
+        int GetCountEmployeeByTeamId(int id);
 
     }
 }

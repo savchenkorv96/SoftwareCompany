@@ -7,6 +7,7 @@ using SoftwareCompany.BLL.Activities.Activity.AccountActivity.GetAllAccount;
 using SoftwareCompany.BLL.Activities.Activity.AccountActivity.Login;
 using SoftwareCompany.BLL.Activities.Activity.EmployeeActivity.CreateEmployee;
 using SoftwareCompany.BLL.Activities.Activity.EmployeeActivity.GetAllEmployee;
+using SoftwareCompany.BLL.Activities.Activity.EmployeeActivity.GetCountEmployeeById;
 using SoftwareCompany.BLL.Activities.Activity.EmployeeActivity.GetEmployee;
 using SoftwareCompany.BLL.Activities.Activity.ProjectActivity.CreateProject;
 using SoftwareCompany.BLL.Activities.Activity.ProjectActivity.GetAllProject;
@@ -29,6 +30,7 @@ using SoftwareCompany.BLL.DomainEvents.AccountEvents.GetAllAccountEvents;
 using SoftwareCompany.BLL.DomainEvents.AccountEvents.LoginEvents;
 using SoftwareCompany.BLL.DomainEvents.EmployeeEvents.CreateEmployeeEvents;
 using SoftwareCompany.BLL.DomainEvents.EmployeeEvents.GetAllEmployeeEvents;
+using SoftwareCompany.BLL.DomainEvents.EmployeeEvents.GetCountEmployeeByTeamIdEvents;
 using SoftwareCompany.BLL.DomainEvents.EmployeeEvents.GetEmployeeByAccountIdEvents;
 using SoftwareCompany.BLL.DomainEvents.EmployeeEvents.GetEmployeeByIdEvents;
 using SoftwareCompany.BLL.DomainEvents.ProjectEvents.CreateProjectEvent;
@@ -76,6 +78,7 @@ namespace SoftwareCompany.BLL.Activities.Factory
             this.ruleCollection.Add(typeof(IRequestActivity<GetEmployeeByIdRequestEvent, GetEmployeeByIdResponseEvent>), new GetEmployeeById(repositoryFactory.Create<IEmployeeRepository>()));
             this.ruleCollection.Add(typeof(IRequestActivity<GetEmployeeByAccountIdRequestEvent, GetEmployeeByAccountIdResponseEvent>), new GetEmployeeByAccountId(repositoryFactory.Create<IEmployeeRepository>()));
             this.ruleCollection.Add(typeof(IRequestActivity<GetAllEmployeeRequestEvent, GetAllEmployeeResponseEvent>), new GetAllEmployeeByRequest(repositoryFactory.Create<IEmployeeRepository>()));
+            this.ruleCollection.Add(typeof(IRequestActivity<GetCountEmployeeByTeamIdRequestEvent, GetCountEmployeeByTeamIdResponseEvent>), new GetCountEmployeeById(repositoryFactory.Create<IEmployeeRepository>()));
 
             this.ruleCollection.Add(typeof(IRequestActivity<CreateTeamRequestEvent, CreateTeamResponseEvent>),
                 new CreateTeamByRequest(repositoryFactory.Create<ITeamRepository>()));

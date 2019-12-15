@@ -51,5 +51,10 @@ namespace SoftwareCompany.DAL.Core.Repository
         {
             return Employees.First((data) => data.Account.Id == id);
         }
+
+        public int GetCountEmployeeByTeamId(int id)
+        {
+            return Employees.Count(data => data.Team.Id == id);
+        }
     }
 }
