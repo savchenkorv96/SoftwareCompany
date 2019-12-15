@@ -21,5 +21,35 @@ namespace SoftwareCompany.Client.Core.HubConnectors.ServerHub
                     Console.WriteLine($"{account.Id}\t{account.Login}\t{account.Password}");
                 });
         }
+
+        public async void CreateAccount(Account account)
+        {
+            await _hubConnection.InvokeCoreAsync<OperationStatusInfo>("CreateAccount", new object[] { account }).ContinueWith(
+                (data) =>
+                {
+                    var account = JsonConvert.DeserializeObject<Account>(data.Result.AttachedObject.ToString());
+                    Console.WriteLine($"{account.Id}\t{account.Login}\t{account.Password}");
+                });
+        }
+
+        public async void GetAllAccount()
+        {
+            await _hubConnection.InvokeCoreAsync<OperationStatusInfo>("GetAllAccount", new object[] {}).ContinueWith(
+                (data) =>
+                {
+                    var account = JsonConvert.DeserializeObject<Account>(data.Result.AttachedObject.ToString());
+                    Console.WriteLine($"{account.Id}\t{account.Login}\t{account.Password}");
+                });
+        }
+
+        public async void GetAccountById(int accountId)
+        {
+            await _hubConnection.InvokeCoreAsync<OperationStatusInfo>("GetAllAccount", new object[] { accountId }).ContinueWith(
+                (data) =>
+                {
+                    var account = JsonConvert.DeserializeObject<Account>(data.Result.AttachedObject.ToString());
+                    Console.WriteLine($"{account.Id}\t{account.Login}\t{account.Password}");
+                });
+        }
     }
 }
