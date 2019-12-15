@@ -16,6 +16,7 @@ using SoftwareCompany.BLL.DomainEvents.AccountEvents.GetAllAccountEvents;
 using SoftwareCompany.BLL.DomainEvents.AccountEvents.LoginEvents;
 using SoftwareCompany.BLL.DomainEvents.EmployeeEvents.CreateEmployeeEvents;
 using SoftwareCompany.BLL.DomainEvents.EmployeeEvents.GetAllEmployeeEvents;
+using SoftwareCompany.BLL.DomainEvents.EmployeeEvents.GetCountEmployeeByTeamIdEvents;
 using SoftwareCompany.BLL.DomainEvents.EmployeeEvents.GetEmployeeByAccountIdEvents;
 using SoftwareCompany.BLL.DomainEvents.EmployeeEvents.GetEmployeeByIdEvents;
 using SoftwareCompany.BLL.DomainEvents.ProjectEvents.CreateProjectEvent;
@@ -67,6 +68,9 @@ namespace SoftwareCompany.BLL.Core.Factory
                 new GetEmployeeByIdUseCase(activitiesFactory.Create<IRequestActivity<GetEmployeeByIdRequestEvent, GetEmployeeByIdResponseEvent>>()));
             this.collection.Add(typeof(IUseCase<GetEmployeeByAccountIdRequestEvent, GetEmployeeByAccountIdResponseEvent>),
                 new GetEmployeeByAccountIdUseCase(activitiesFactory.Create<IRequestActivity<GetEmployeeByAccountIdRequestEvent, GetEmployeeByAccountIdResponseEvent>>()));
+            this.collection.Add(typeof(IUseCase<GetCountEmployeeByTeamIdRequestEvent, GetCountEmployeeByTeamIdResponseEvent>),
+                new GetCountEmployeeByTeamIdUseCase(activitiesFactory.Create<IRequestActivity<GetCountEmployeeByTeamIdRequestEvent, GetCountEmployeeByTeamIdResponseEvent>>()));
+
 
 
             this.collection.Add(typeof(IUseCase<CreateTeamRequestEvent, CreateTeamResponseEvent>),
