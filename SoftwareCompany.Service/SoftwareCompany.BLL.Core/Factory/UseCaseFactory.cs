@@ -7,6 +7,7 @@ using SoftwareCompany.BLL.Activities.Contracts;
 using SoftwareCompany.BLL.Core.Contract;
 using SoftwareCompany.BLL.Core.UseCases.AccountUseCase;
 using SoftwareCompany.BLL.Core.UseCases.EmployeeUseCase;
+using SoftwareCompany.BLL.Core.UseCases.ProjectUseCase;
 using SoftwareCompany.BLL.Core.UseCases.TeamUseCase;
 using SoftwareCompany.BLL.DomainEvents.AccountEvents.CreateAccountEvents;
 using SoftwareCompany.BLL.DomainEvents.AccountEvents.GetAccountByIdEvents;
@@ -16,6 +17,11 @@ using SoftwareCompany.BLL.DomainEvents.EmployeeEvents.CreateEmployeeEvents;
 using SoftwareCompany.BLL.DomainEvents.EmployeeEvents.GetAllEmployeeEvents;
 using SoftwareCompany.BLL.DomainEvents.EmployeeEvents.GetEmployeeByAccountIdEvents;
 using SoftwareCompany.BLL.DomainEvents.EmployeeEvents.GetEmployeeByIdEvents;
+using SoftwareCompany.BLL.DomainEvents.ProjectEvents.CreateProjectEvent;
+using SoftwareCompany.BLL.DomainEvents.ProjectEvents.GetAllProjectEvent;
+using SoftwareCompany.BLL.DomainEvents.ProjectEvents.GetProjectByIdEvent;
+using SoftwareCompany.BLL.DomainEvents.ProjectEvents.GetProjectListByTeamIdEvent;
+using SoftwareCompany.BLL.DomainEvents.ProjectEvents.UpdateProjectEvent;
 using SoftwareCompany.BLL.DomainEvents.TeamEvents.CreateTeamEvent;
 using SoftwareCompany.BLL.DomainEvents.TeamEvents.GetAllTemEvent;
 using SoftwareCompany.BLL.DomainEvents.TeamEvents.GetTeamByIdEvent;
@@ -62,6 +68,16 @@ namespace SoftwareCompany.BLL.Core.Factory
             this.collection.Add(typeof(IUseCase<GetTeamByIdRequestEvent, GetTeamByIdResponseEvent>),
                 new GetTeamByIdUseCase(activitiesFactory.Create<IRequestActivity<GetTeamByIdRequestEvent, GetTeamByIdResponseEvent>>()));
 
+            this.collection.Add(typeof(IUseCase<CreateProjectRequestEvent, CreateProjectResponseEvent>),
+                new CreateProjectUseCase(activitiesFactory.Create<IRequestActivity<CreateProjectRequestEvent, CreateProjectResponseEvent>>()));
+            this.collection.Add(typeof(IUseCase<UpdateProjectRequestEvent, UpdateProjectResponseEvent>),
+                new UpdateProjectUseCase(activitiesFactory.Create<IRequestActivity<UpdateProjectRequestEvent, UpdateProjectResponseEvent>>()));
+            this.collection.Add(typeof(IUseCase<GetAllProjectRequestEvent, GetAllProjectResponseEvent>),
+                new GetAllProjectUseCase(activitiesFactory.Create<IRequestActivity<GetAllProjectRequestEvent, GetAllProjectResponseEvent>>()));
+            this.collection.Add(typeof(IUseCase<GetProjectByIdRequestEvent, GetProjectByIdResponseEvent>),
+                new GetProjectByIdUseCase(activitiesFactory.Create<IRequestActivity<GetProjectByIdRequestEvent, GetProjectByIdResponseEvent>>()));
+            this.collection.Add(typeof(IUseCase<GetProjectByTeamIdRequestEvent, GetProjectByTeamIdResponseEvent>),
+                new GetProjectByTeamIdUseCase(activitiesFactory.Create<IRequestActivity<GetProjectByTeamIdRequestEvent, GetProjectByTeamIdResponseEvent>>()));
 
         }
 
