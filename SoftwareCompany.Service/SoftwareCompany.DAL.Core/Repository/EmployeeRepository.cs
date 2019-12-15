@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using SoftwareCompany.DAL.Common.Entities;
 using SoftwareCompany.DAL.Core.Repository.Contract;
@@ -18,17 +19,19 @@ namespace SoftwareCompany.DAL.Core.Repository
 
         public IEnumerable<Employee> GetAll()
         {
-            throw new NotImplementedException();
+            return Employees.ToList();
         }
 
         public Employee GetById(int id)
         {
-            throw new NotImplementedException();
+            return Employees.First((data) => data.Id == id);
         }
 
         public bool Create(Employee data)
         {
-            throw new NotImplementedException();
+            _context.Employees.Add(data);
+            _context.SaveChanges();
+            return true;
         }
 
         public bool Update(Employee data)
@@ -39,6 +42,11 @@ namespace SoftwareCompany.DAL.Core.Repository
         public bool Delete(Employee data)
         {
             throw new NotImplementedException();
+        }
+
+        public Employee GetEmployeeByAccountId(int id)
+        {
+            return Employees.First((data) => data.Account.Id == id);
         }
     }
 }

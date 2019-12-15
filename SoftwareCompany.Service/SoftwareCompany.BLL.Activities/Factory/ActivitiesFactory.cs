@@ -5,11 +5,17 @@ using SoftwareCompany.BLL.Activities.Activity.AccountActivity.CreateAccount;
 using SoftwareCompany.BLL.Activities.Activity.AccountActivity.GetAccount;
 using SoftwareCompany.BLL.Activities.Activity.AccountActivity.GetAllAccount;
 using SoftwareCompany.BLL.Activities.Activity.AccountActivity.Login;
+using SoftwareCompany.BLL.Activities.Activity.EmployeeActivity.CreateEmployee;
+using SoftwareCompany.BLL.Activities.Activity.EmployeeActivity.GetAllEmployee;
+using SoftwareCompany.BLL.Activities.Activity.EmployeeActivity.GetEmployee;
 using SoftwareCompany.BLL.Activities.Contracts;
 using SoftwareCompany.BLL.DomainEvents.AccountEvents.CreateAccountEvents;
 using SoftwareCompany.BLL.DomainEvents.AccountEvents.GetAccountByIdEvents;
 using SoftwareCompany.BLL.DomainEvents.AccountEvents.GetAllAccountEvents;
 using SoftwareCompany.BLL.DomainEvents.AccountEvents.LoginEvents;
+using SoftwareCompany.BLL.DomainEvents.EmployeeEvents.CreateEmployeeEvents;
+using SoftwareCompany.BLL.DomainEvents.EmployeeEvents.GetEmployeeByAccountIdEvents;
+using SoftwareCompany.BLL.DomainEvents.EmployeeEvents.GetEmployeeByIdEvents;
 using SoftwareCompany.BLL.Rules.Contract;
 using SoftwareCompany.BLL.Rules.Validation.Operations.AccountOperation;
 using SoftwareCompany.BLL.Rules.Validation.Operations.AccountOperation.Contract;
@@ -33,6 +39,13 @@ namespace SoftwareCompany.BLL.Activities.Factory
 
             this.ruleCollection.Add(typeof(IRequestActivity<GetAccountByIdRequestEvent, GetAccountByIdResponseEvent>), new GetAccountById(repositoryFactory.Create<IAccountRepository>()));
             this.ruleCollection.Add(typeof(IRequestActivity<GetAllAccountRequestEvent, GetAllAccountResponseEvent>), new GetAllAccountByRequest(repositoryFactory.Create<IAccountRepository>()));
+
+
+
+            this.ruleCollection.Add(typeof(IRequestActivity<CreateEmployeeRequestEvent, CreateEmployeeResponseEvent>), new CreateEmployeeByRequest(repositoryFactory.Create<IEmployeeRepository>()));
+            this.ruleCollection.Add(typeof(IRequestActivity<GetEmployeeByIdRequestEvent, GetEmployeeByIdResponseEvent>), new GetEmployeeById(repositoryFactory.Create<IEmployeeRepository>()));
+            this.ruleCollection.Add(typeof(IRequestActivity<GetEmployeeByAccountIdRequestEvent, GetEmployeeByAccountIdResponseEvent>), new GetEmployeeByAccountId(repositoryFactory.Create<IEmployeeRepository>()));
+            this.ruleCollection.Add(typeof(IRequestActivity<GetAllAccountRequestEvent, GetAllAccountResponseEvent>), new GetAllEmployeeByRequest(repositoryFactory.Create<IEmployeeRepository>()));
 
         }
 
