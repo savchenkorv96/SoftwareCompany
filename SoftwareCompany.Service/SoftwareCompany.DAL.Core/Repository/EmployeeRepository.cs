@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.EntityFrameworkCore;
 using SoftwareCompany.DAL.Common.Entities;
 using SoftwareCompany.DAL.Core.Repository.Contract;
 
@@ -10,11 +11,13 @@ namespace SoftwareCompany.DAL.Core.Repository
     public class EmployeeRepository : IEmployeeRepository
     {
         private readonly ApplicationDbContext _context;
-        public IEnumerable<Employee> Employees => _context.Employees;
+        public IEnumerable<Employee> Employees => _context.Set<Employee>().Include(x => x.Account).Include(x=>x.Team).ToList();
 
         public EmployeeRepository(ApplicationDbContext context)
         {
             _context = context;
+            _context.Set<Employee>().Include(x => x.Account);
+            _context.Set<Employee>().Include(x => x.Team);
         }
 
         public IEnumerable<Employee> GetAll()

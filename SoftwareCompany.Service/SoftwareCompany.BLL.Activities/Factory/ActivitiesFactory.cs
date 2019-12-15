@@ -14,6 +14,7 @@ using SoftwareCompany.BLL.DomainEvents.AccountEvents.GetAccountByIdEvents;
 using SoftwareCompany.BLL.DomainEvents.AccountEvents.GetAllAccountEvents;
 using SoftwareCompany.BLL.DomainEvents.AccountEvents.LoginEvents;
 using SoftwareCompany.BLL.DomainEvents.EmployeeEvents.CreateEmployeeEvents;
+using SoftwareCompany.BLL.DomainEvents.EmployeeEvents.GetAllEmployeeEvents;
 using SoftwareCompany.BLL.DomainEvents.EmployeeEvents.GetEmployeeByAccountIdEvents;
 using SoftwareCompany.BLL.DomainEvents.EmployeeEvents.GetEmployeeByIdEvents;
 using SoftwareCompany.BLL.Rules.Contract;
@@ -45,7 +46,7 @@ namespace SoftwareCompany.BLL.Activities.Factory
             this.ruleCollection.Add(typeof(IRequestActivity<CreateEmployeeRequestEvent, CreateEmployeeResponseEvent>), new CreateEmployeeByRequest(repositoryFactory.Create<IEmployeeRepository>()));
             this.ruleCollection.Add(typeof(IRequestActivity<GetEmployeeByIdRequestEvent, GetEmployeeByIdResponseEvent>), new GetEmployeeById(repositoryFactory.Create<IEmployeeRepository>()));
             this.ruleCollection.Add(typeof(IRequestActivity<GetEmployeeByAccountIdRequestEvent, GetEmployeeByAccountIdResponseEvent>), new GetEmployeeByAccountId(repositoryFactory.Create<IEmployeeRepository>()));
-            this.ruleCollection.Add(typeof(IRequestActivity<GetAllAccountRequestEvent, GetAllAccountResponseEvent>), new GetAllEmployeeByRequest(repositoryFactory.Create<IEmployeeRepository>()));
+            this.ruleCollection.Add(typeof(IRequestActivity<GetAllEmployeeRequestEvent, GetAllEmployeeResponseEvent>), new GetAllEmployeeByRequest(repositoryFactory.Create<IEmployeeRepository>()));
 
         }
 

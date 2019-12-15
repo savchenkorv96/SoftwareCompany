@@ -83,7 +83,50 @@ namespace SoftwareCompany.Client.ConsoleApp
             //        }
             //    });
 
+            //await connection.InvokeCoreAsync<OperationStatusInfo>("GetAllEmployee", new object[] { }).ContinueWith(
+            //    (data) =>
+            //    {
+            //        if (data.Result.OperationStatus == OperationStatus.Done)
+            //        {
+            //            IEnumerable<Employee> account = JsonConvert.DeserializeObject<IEnumerable<Employee>>(data.Result.AttachedObject.ToString());
+            //            foreach (var VARIABLE in account)
+            //            {
+            //                Console.WriteLine($"{VARIABLE.Id}\t{VARIABLE.Team.Name}\t{VARIABLE.Position}");
+            //            }
+            //        }
+            //        else
+            //        {
+            //            Console.WriteLine(data.Result.AttachedInfo);
+            //        }
+            //    });
 
+            //await connection.InvokeCoreAsync<OperationStatusInfo>("GetEmployeeById", new object[] { 1 }).ContinueWith(
+            //    (data) =>
+            //    {
+            //        if (data.Result.OperationStatus == OperationStatus.Done)
+            //        {
+            //            var account = JsonConvert.DeserializeObject<Employee>(data.Result.AttachedObject.ToString());
+            //            Console.WriteLine($"{account.Id}\t{account.Account.Login}\t{account.Account.Password}");
+            //        }
+            //        else
+            //        {
+            //            Console.WriteLine(data.Result.AttachedInfo);
+            //        }
+            //    });
+
+            //await connection.InvokeCoreAsync<OperationStatusInfo>("GetEmployeeByAccountId", new object[] { 1 }).ContinueWith(
+            //    (data) =>
+            //    {
+            //        if (data.Result.OperationStatus == OperationStatus.Done)
+            //        {
+            //            var account = JsonConvert.DeserializeObject<Employee>(data.Result.AttachedObject.ToString());
+            //            Console.WriteLine($"{account.Id}\t{account.Account.Login}\t{account.Account.Password}");
+            //        }
+            //        else
+            //        {
+            //            Console.WriteLine(data.Result.AttachedInfo);
+            //        }
+            //    });
         }
     }
 }
