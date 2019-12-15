@@ -4,10 +4,15 @@ using System.Text;
 using SoftwareCompany.BLL.Activities.Contracts;
 using SoftwareCompany.BLL.Core.Contract;
 using SoftwareCompany.BLL.Core.UseCases.AccountUseCase;
+using SoftwareCompany.BLL.Core.UseCases.EmployeeUseCase;
 using SoftwareCompany.BLL.DomainEvents.AccountEvents.CreateAccountEvents;
 using SoftwareCompany.BLL.DomainEvents.AccountEvents.GetAccountByIdEvents;
 using SoftwareCompany.BLL.DomainEvents.AccountEvents.GetAllAccountEvents;
 using SoftwareCompany.BLL.DomainEvents.AccountEvents.LoginEvents;
+using SoftwareCompany.BLL.DomainEvents.EmployeeEvents.CreateEmployeeEvents;
+using SoftwareCompany.BLL.DomainEvents.EmployeeEvents.GetAllEmployeeEvents;
+using SoftwareCompany.BLL.DomainEvents.EmployeeEvents.GetEmployeeByAccountIdEvents;
+using SoftwareCompany.BLL.DomainEvents.EmployeeEvents.GetEmployeeByIdEvents;
 
 namespace SoftwareCompany.BLL.Core.Factory
 {
@@ -32,6 +37,16 @@ namespace SoftwareCompany.BLL.Core.Factory
 
             this.collection.Add(typeof(IUseCase<GetAllAccountRequestEvent, GetAllAccountResponseEvent>),
                 new GetAllAccountUseCase(activitiesFactory.Create<IRequestActivity<GetAllAccountRequestEvent, GetAllAccountResponseEvent>>()));
+
+
+            this.collection.Add(typeof(IUseCase<CreateEmployeeRequestEvent, CreateEmployeeResponseEvent>),
+                new CreateEmployeeUseCase(activitiesFactory.Create<IRequestActivity<CreateEmployeeRequestEvent, CreateEmployeeResponseEvent>>()));
+            this.collection.Add(typeof(IUseCase<GetAllEmployeeRequestEvent, GetAllEmployeeResponseEvent>),
+                new GetAllEmployeeUseCase(activitiesFactory.Create<IRequestActivity<GetAllEmployeeRequestEvent, GetAllEmployeeResponseEvent>>()));
+            this.collection.Add(typeof(IUseCase<GetEmployeeByIdRequestEvent, GetEmployeeByIdResponseEvent>),
+                new GetEmployeeByIdUseCase(activitiesFactory.Create<IRequestActivity<GetEmployeeByIdRequestEvent, GetEmployeeByIdResponseEvent>>()));
+            this.collection.Add(typeof(IUseCase<GetEmployeeByAccountIdRequestEvent, GetEmployeeByAccountIdResponseEvent>),
+                new GetEmployeeByAccountIdUseCase(activitiesFactory.Create<IRequestActivity<GetEmployeeByAccountIdRequestEvent, GetEmployeeByAccountIdResponseEvent>>()));
 
         }
 
