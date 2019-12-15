@@ -12,7 +12,7 @@ namespace SoftwareCompany.Client.Core.HubConnectors.ServerHub
 {
     public partial class ServerHubConnector
     {
-        public HubConnection HubConnection { get; set; }
+        public HubConnection _hubConnection { get; set; }
         public string Url { get; set; }
         public int Port { get; set; }
         public string ServerUrl { get; set; } 
@@ -32,29 +32,21 @@ namespace SoftwareCompany.Client.Core.HubConnectors.ServerHub
 
         public void BuildConnection()
         {
-            HubConnection = new HubConnectionBuilder()
+            _hubConnection = new HubConnectionBuilder()
                 .WithUrl(ServerHubUrl, options => { options.Transports = HttpTransportType.WebSockets; })
                 .Build();
         }
 
         public async void GetConnection()
         {
-            await HubConnection.StartAsync();
+            await _hubConnection.StartAsync();
         }
 
         public async void CloseConnection()
         {
-            await HubConnection.StopAsync();
+            await _hubConnection.StopAsync();
         }
 
-        public async void Login(string login, string password)
-        {
-            await HubConnection.InvokeCoreAsync<OperationStatusInfo>("Login", new object[] { login, password }).ContinueWith(
-                (data) =>
-                {
-                    var account = JsonConvert.DeserializeObject<Account>(data.Result.AttachedObject.ToString());
-                    Console.WriteLine($"{account.Id}\t{account.Login}\t{account.Password}");
-                });
-        }
+        
     }
 }
