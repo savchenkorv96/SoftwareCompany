@@ -9,6 +9,7 @@ using Newtonsoft.Json;
 using SoftwareCompany.Client.Common.Entities;
 using SoftwareCompany.Client.Common.Enumerations;
 using SoftwareCompany.Client.Common.Helpers;
+using SoftwareCompany.Client.Core.HubConnectors.ServerHub;
 
 namespace SoftwareCompany.Client.ConsoleApp
 {
@@ -16,19 +17,14 @@ namespace SoftwareCompany.Client.ConsoleApp
     {
         static void Main(string[] args)
         {
-            Task.Run(Run);
+            ServerHubConnector serverHubConnector = new ServerHubConnector("127.0.0.1",8001,"ServerHub");
+            serverHubConnector.GetConnection();
+            serverHubConnector.Login("user1","password1");
             Console.ReadLine();
         }
 
         static async Task Run()
         {
-            var connection = new HubConnectionBuilder()
-                .WithUrl("http://localhost:8001/ServerHub")
-                .Build();
-            //connection.On<string, string>("GetAccountByLoginAndPassword", (login, password) => { Console.WriteLine(login); });
-
-            await connection.StartAsync();
-
             //await connection.InvokeCoreAsync<OperationStatusInfo>("Login", new object[] { "user1", "password1" }).ContinueWith(
             //    (data) =>
             //    {
