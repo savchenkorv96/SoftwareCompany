@@ -7,6 +7,7 @@ using SoftwareCompany.BLL.Activities.Contracts;
 using SoftwareCompany.BLL.Core.Contract;
 using SoftwareCompany.BLL.Core.UseCases.AccountUseCase;
 using SoftwareCompany.BLL.Core.UseCases.EmployeeUseCase;
+using SoftwareCompany.BLL.Core.UseCases.ProjectTaskUseCase;
 using SoftwareCompany.BLL.Core.UseCases.ProjectUseCase;
 using SoftwareCompany.BLL.Core.UseCases.TeamUseCase;
 using SoftwareCompany.BLL.DomainEvents.AccountEvents.CreateAccountEvents;
@@ -22,6 +23,13 @@ using SoftwareCompany.BLL.DomainEvents.ProjectEvents.GetAllProjectEvent;
 using SoftwareCompany.BLL.DomainEvents.ProjectEvents.GetProjectByIdEvent;
 using SoftwareCompany.BLL.DomainEvents.ProjectEvents.GetProjectListByTeamIdEvent;
 using SoftwareCompany.BLL.DomainEvents.ProjectEvents.UpdateProjectEvent;
+using SoftwareCompany.BLL.DomainEvents.ProjectTaskEvents.CreateProjectTaskEvent;
+using SoftwareCompany.BLL.DomainEvents.ProjectTaskEvents.GetAllProjectTaskEvent;
+using SoftwareCompany.BLL.DomainEvents.ProjectTaskEvents.GetCountSuccessTaskByProjectIdEvent;
+using SoftwareCompany.BLL.DomainEvents.ProjectTaskEvents.GetCountTaskByProjectIdEvent;
+using SoftwareCompany.BLL.DomainEvents.ProjectTaskEvents.GetProjectTaskByIdEvent;
+using SoftwareCompany.BLL.DomainEvents.ProjectTaskEvents.GetTaskListByEmployeeIdEvent;
+using SoftwareCompany.BLL.DomainEvents.ProjectTaskEvents.UpdateProjectTaskEvent;
 using SoftwareCompany.BLL.DomainEvents.TeamEvents.CreateTeamEvent;
 using SoftwareCompany.BLL.DomainEvents.TeamEvents.GetAllTemEvent;
 using SoftwareCompany.BLL.DomainEvents.TeamEvents.GetTeamByIdEvent;
@@ -78,6 +86,23 @@ namespace SoftwareCompany.BLL.Core.Factory
                 new GetProjectByIdUseCase(activitiesFactory.Create<IRequestActivity<GetProjectByIdRequestEvent, GetProjectByIdResponseEvent>>()));
             this.collection.Add(typeof(IUseCase<GetProjectByTeamIdRequestEvent, GetProjectByTeamIdResponseEvent>),
                 new GetProjectByTeamIdUseCase(activitiesFactory.Create<IRequestActivity<GetProjectByTeamIdRequestEvent, GetProjectByTeamIdResponseEvent>>()));
+
+            this.collection.Add(typeof(IUseCase<CreateProjectTaskRequestEvent, CreateProjectTaskResponseEvent>),
+                new CreateProjectTaskUseCase(activitiesFactory.Create<IRequestActivity<CreateProjectTaskRequestEvent, CreateProjectTaskResponseEvent>>()));
+            this.collection.Add(typeof(IUseCase<UpdateProjectTaskRequestEvent, UpdateProjectTaskResponseEvent>),
+                new UpdateProjectTaskUseCase(activitiesFactory.Create<IRequestActivity<UpdateProjectTaskRequestEvent, UpdateProjectTaskResponseEvent>>()));
+            this.collection.Add(typeof(IUseCase<GetAllProjectTaskRequestEvent, GetAllProjectTaskResponseEvent>),
+                new GetAllProjectTaskUseCase(activitiesFactory.Create<IRequestActivity<GetAllProjectTaskRequestEvent, GetAllProjectTaskResponseEvent>>()));
+            this.collection.Add(typeof(IUseCase<GetProjectTaskByIdRequestEvent, GetProjectTaskByIdResponseEvent>),
+                new GetProjectTaskByIdUseCase(activitiesFactory.Create<IRequestActivity<GetProjectTaskByIdRequestEvent, GetProjectTaskByIdResponseEvent>>()));
+            this.collection.Add(typeof(IUseCase<GetTaskListByEmployeeIdRequestEvent, GetTaskListByEmployeeIdResponseEvent>),
+                new GetProjectTaskByEmployeeIdUseCase(activitiesFactory.Create<IRequestActivity<GetTaskListByEmployeeIdRequestEvent, GetTaskListByEmployeeIdResponseEvent>>()));
+
+            this.collection.Add(typeof(IUseCase<GetCountTaskByProjectIdRequestEvent, GetCountTaskByProjectIdResponseEvent>),
+                new GetCountProjectTaskByProjectIdUseCase(activitiesFactory.Create<IRequestActivity<GetCountTaskByProjectIdRequestEvent, GetCountTaskByProjectIdResponseEvent>>()));
+            this.collection.Add(typeof(IUseCase<GetCountSuccessTaskByProjectIdRequestEvent, GetCountSuccessTaskByProjectIdResponseEvent>),
+                new GetCountSuccessProjectTaskByProjectIdUseCase(activitiesFactory.Create<IRequestActivity<GetCountSuccessTaskByProjectIdRequestEvent, GetCountSuccessTaskByProjectIdResponseEvent>>()));
+
 
         }
 
