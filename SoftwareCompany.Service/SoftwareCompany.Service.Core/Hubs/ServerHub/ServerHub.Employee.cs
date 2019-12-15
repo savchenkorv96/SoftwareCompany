@@ -7,6 +7,7 @@ using SoftwareCompany.BLL.DomainEvents.AccountEvents.CreateAccountEvents;
 using SoftwareCompany.BLL.DomainEvents.AccountEvents.GetAccountByIdEvents;
 using SoftwareCompany.BLL.DomainEvents.EmployeeEvents.CreateEmployeeEvents;
 using SoftwareCompany.BLL.DomainEvents.EmployeeEvents.GetAllEmployeeEvents;
+using SoftwareCompany.BLL.DomainEvents.EmployeeEvents.GetCountEmployeeByTeamIdEvents;
 using SoftwareCompany.BLL.DomainEvents.EmployeeEvents.GetEmployeeByAccountIdEvents;
 using SoftwareCompany.BLL.DomainEvents.EmployeeEvents.GetEmployeeByIdEvents;
 using SoftwareCompany.BLL.DomainEvents.TeamEvents.CreateTeamEvent;
@@ -30,6 +31,32 @@ namespace SoftwareCompany.Service.Core.Hubs.ServerHub
                         _hubEnvironment.UseCaseFactory.Create<IUseCase<GetEmployeeByIdRequestEvent, GetEmployeeByIdResponseEvent>>().Execute(request);
 
                     operationStatusInfo.AttachedObject = response.Employee;
+
+                    return operationStatusInfo;
+                }
+                catch (Exception ex)
+                {
+                    operationStatusInfo.OperationStatus = OperationStatus.Cancelled;
+                    operationStatusInfo.AttachedInfo = ex.Message;
+                }
+
+                return operationStatusInfo;
+            });
+        }
+
+        public async Task<OperationStatusInfo> GetCountEmployeeByTeamId(int id)
+        {
+            return await Task.Run(() =>
+            {
+                OperationStatusInfo operationStatusInfo = new OperationStatusInfo(operationStatus: OperationStatus.Done);
+                GetCountEmployeeByTeamIdRequestEvent request = new GetCountEmployeeByTeamIdRequestEvent(id);
+
+                try
+                {
+                    GetCountEmployeeByTeamIdResponseEvent response =
+                        _hubEnvironment.UseCaseFactory.Create<IUseCase<GetCountEmployeeByTeamIdRequestEvent, GetCountEmployeeByTeamIdResponseEvent>>().Execute(request);
+
+                    operationStatusInfo.AttachedObject = response.CountEmployee;
 
                     return operationStatusInfo;
                 }
