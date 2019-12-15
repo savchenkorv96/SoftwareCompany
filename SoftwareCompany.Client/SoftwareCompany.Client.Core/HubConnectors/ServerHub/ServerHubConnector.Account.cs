@@ -12,14 +12,16 @@ namespace SoftwareCompany.Client.Core.HubConnectors.ServerHub
 {
     partial class ServerHubConnector
     {
-        public async void Login(string login, string password)
+        public async Task<Account> Login(string login, string password)
         {
-            await _hubConnection.InvokeCoreAsync<OperationStatusInfo>("Login", new object[] { login, password }).ContinueWith(
-                (data) =>
-                {
-                    var account = JsonConvert.DeserializeObject<Account>(data.Result.AttachedObject.ToString());
-                    Console.WriteLine($"{account.Id}\t{account.Login}\t{account.Password}");
-                });
+            return await _hubConnection.InvokeCoreAsync<OperationStatusInfo>("Login", new object[] {login, password})
+                .ContinueWith<Account>(
+                    (data) =>
+                    {
+                        var account = JsonConvert.DeserializeObject<Account>(data.Result.AttachedObject.ToString());
+                        Console.WriteLine($"{account.Id}\t{account.Login}\t{account.Password}");
+                        return account;
+                    });
         }
 
         public async void CreateAccount(Account account)
