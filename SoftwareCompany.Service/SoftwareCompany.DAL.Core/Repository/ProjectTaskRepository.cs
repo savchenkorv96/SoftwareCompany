@@ -44,12 +44,17 @@ namespace SoftwareCompany.DAL.Core.Repository
 
         public bool Create(ProjectTask data)
         {
-            throw new NotImplementedException();
+            _context.Tasks.Add(data);
+            _context.SaveChanges();
+            return true;
         }
 
         public bool Update(ProjectTask data)
         {
-            throw new NotImplementedException();
+            ProjectTask Old = GetById(data.Id);
+            Old = data;
+            _context.SaveChanges();
+            return true;
         }
 
         public bool Delete(ProjectTask data)

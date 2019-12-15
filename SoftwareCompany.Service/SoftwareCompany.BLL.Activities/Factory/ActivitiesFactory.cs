@@ -13,6 +13,12 @@ using SoftwareCompany.BLL.Activities.Activity.ProjectActivity.GetAllProject;
 using SoftwareCompany.BLL.Activities.Activity.ProjectActivity.GetProjectById;
 using SoftwareCompany.BLL.Activities.Activity.ProjectActivity.GetProjectByTeamId;
 using SoftwareCompany.BLL.Activities.Activity.ProjectActivity.UpdateProject;
+using SoftwareCompany.BLL.Activities.Activity.ProjectTaskActivity.CreateProjectTask;
+using SoftwareCompany.BLL.Activities.Activity.ProjectTaskActivity.GetAllProjectTask;
+using SoftwareCompany.BLL.Activities.Activity.ProjectTaskActivity.GetCountProjectTaskByProjectId;
+using SoftwareCompany.BLL.Activities.Activity.ProjectTaskActivity.GetProjectTaskById;
+using SoftwareCompany.BLL.Activities.Activity.ProjectTaskActivity.GetTaskByEmployeeId;
+using SoftwareCompany.BLL.Activities.Activity.ProjectTaskActivity.UpdateProjectTask;
 using SoftwareCompany.BLL.Activities.Activity.TeamActivity.CreateTeam;
 using SoftwareCompany.BLL.Activities.Activity.TeamActivity.GetAllTeam;
 using SoftwareCompany.BLL.Activities.Activity.TeamActivity.GetTeam;
@@ -30,6 +36,13 @@ using SoftwareCompany.BLL.DomainEvents.ProjectEvents.GetAllProjectEvent;
 using SoftwareCompany.BLL.DomainEvents.ProjectEvents.GetProjectByIdEvent;
 using SoftwareCompany.BLL.DomainEvents.ProjectEvents.GetProjectListByTeamIdEvent;
 using SoftwareCompany.BLL.DomainEvents.ProjectEvents.UpdateProjectEvent;
+using SoftwareCompany.BLL.DomainEvents.ProjectTaskEvents.CreateProjectTaskEvent;
+using SoftwareCompany.BLL.DomainEvents.ProjectTaskEvents.GetAllProjectTaskEvent;
+using SoftwareCompany.BLL.DomainEvents.ProjectTaskEvents.GetCountSuccessTaskByProjectIdEvent;
+using SoftwareCompany.BLL.DomainEvents.ProjectTaskEvents.GetCountTaskByProjectIdEvent;
+using SoftwareCompany.BLL.DomainEvents.ProjectTaskEvents.GetProjectTaskByIdEvent;
+using SoftwareCompany.BLL.DomainEvents.ProjectTaskEvents.GetTaskListByEmployeeIdEvent;
+using SoftwareCompany.BLL.DomainEvents.ProjectTaskEvents.UpdateProjectTaskEvent;
 using SoftwareCompany.BLL.DomainEvents.TeamEvents.CreateTeamEvent;
 using SoftwareCompany.BLL.DomainEvents.TeamEvents.GetAllTemEvent;
 using SoftwareCompany.BLL.DomainEvents.TeamEvents.GetTeamByIdEvent;
@@ -77,6 +90,13 @@ namespace SoftwareCompany.BLL.Activities.Factory
             this.ruleCollection.Add(typeof(IRequestActivity<GetProjectByIdRequestEvent, GetProjectByIdResponseEvent>), new GetProjectById(repositoryFactory.Create<IProjectRepository>()));
             this.ruleCollection.Add(typeof(IRequestActivity<GetProjectByTeamIdRequestEvent, GetProjectByTeamIdResponseEvent>), new GetProjectByTeamId(repositoryFactory.Create<IProjectRepository>()));
 
+            this.ruleCollection.Add(typeof(IRequestActivity<CreateProjectTaskRequestEvent, CreateProjectTaskResponseEvent>), new CreateProjectTaskByRequest(repositoryFactory.Create<IProjectTaskRepository>()));
+            this.ruleCollection.Add(typeof(IRequestActivity<UpdateProjectTaskRequestEvent, UpdateProjectTaskResponseEvent>), new UpdateProjectTaskByRequest(repositoryFactory.Create<IProjectTaskRepository>()));
+            this.ruleCollection.Add(typeof(IRequestActivity<GetAllProjectTaskRequestEvent, GetAllProjectTaskResponseEvent>), new GetAllProjectTaskByRequest(repositoryFactory.Create<IProjectTaskRepository>()));
+            this.ruleCollection.Add(typeof(IRequestActivity<GetProjectTaskByIdRequestEvent, GetProjectTaskByIdResponseEvent>), new GetProjectTaskById(repositoryFactory.Create<IProjectTaskRepository>()));
+            this.ruleCollection.Add(typeof(IRequestActivity<GetTaskListByEmployeeIdRequestEvent, GetTaskListByEmployeeIdResponseEvent>), new GetTaskByEmployeeId(repositoryFactory.Create<IProjectTaskRepository>()));
+            this.ruleCollection.Add(typeof(IRequestActivity<GetCountTaskByProjectIdRequestEvent, GetCountTaskByProjectIdResponseEvent>), new GetCountProjectTaskByProjectId(repositoryFactory.Create<IProjectTaskRepository>()));
+            this.ruleCollection.Add(typeof(IRequestActivity<GetCountSuccessTaskByProjectIdRequestEvent, GetCountSuccessTaskByProjectIdResponseEvent>), new GetCountSuccessProjectTaskByProjectId(repositoryFactory.Create<IProjectTaskRepository>()));
 
         }
 
