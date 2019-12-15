@@ -8,6 +8,9 @@ using SoftwareCompany.BLL.Activities.Activity.AccountActivity.Login;
 using SoftwareCompany.BLL.Activities.Activity.EmployeeActivity.CreateEmployee;
 using SoftwareCompany.BLL.Activities.Activity.EmployeeActivity.GetAllEmployee;
 using SoftwareCompany.BLL.Activities.Activity.EmployeeActivity.GetEmployee;
+using SoftwareCompany.BLL.Activities.Activity.TeamActivity.CreateTeam;
+using SoftwareCompany.BLL.Activities.Activity.TeamActivity.GetAllTeam;
+using SoftwareCompany.BLL.Activities.Activity.TeamActivity.GetTeam;
 using SoftwareCompany.BLL.Activities.Contracts;
 using SoftwareCompany.BLL.DomainEvents.AccountEvents.CreateAccountEvents;
 using SoftwareCompany.BLL.DomainEvents.AccountEvents.GetAccountByIdEvents;
@@ -17,6 +20,9 @@ using SoftwareCompany.BLL.DomainEvents.EmployeeEvents.CreateEmployeeEvents;
 using SoftwareCompany.BLL.DomainEvents.EmployeeEvents.GetAllEmployeeEvents;
 using SoftwareCompany.BLL.DomainEvents.EmployeeEvents.GetEmployeeByAccountIdEvents;
 using SoftwareCompany.BLL.DomainEvents.EmployeeEvents.GetEmployeeByIdEvents;
+using SoftwareCompany.BLL.DomainEvents.TeamEvents.CreateTeamEvent;
+using SoftwareCompany.BLL.DomainEvents.TeamEvents.GetAllTemEvent;
+using SoftwareCompany.BLL.DomainEvents.TeamEvents.GetTeamByIdEvent;
 using SoftwareCompany.BLL.Rules.Contract;
 using SoftwareCompany.BLL.Rules.Validation.Operations.AccountOperation;
 using SoftwareCompany.BLL.Rules.Validation.Operations.AccountOperation.Contract;
@@ -48,6 +54,12 @@ namespace SoftwareCompany.BLL.Activities.Factory
             this.ruleCollection.Add(typeof(IRequestActivity<GetEmployeeByAccountIdRequestEvent, GetEmployeeByAccountIdResponseEvent>), new GetEmployeeByAccountId(repositoryFactory.Create<IEmployeeRepository>()));
             this.ruleCollection.Add(typeof(IRequestActivity<GetAllEmployeeRequestEvent, GetAllEmployeeResponseEvent>), new GetAllEmployeeByRequest(repositoryFactory.Create<IEmployeeRepository>()));
 
+            this.ruleCollection.Add(typeof(IRequestActivity<CreateTeamRequestEvent, CreateTeamResponseEvent>),
+                new CreateTeamByRequest(repositoryFactory.Create<ITeamRepository>()));
+            this.ruleCollection.Add(typeof(IRequestActivity<GetTeamByIdRequestEvent, GetTeamByIdResponseEvent>),
+                new GetTeamById(repositoryFactory.Create<ITeamRepository>()));
+            this.ruleCollection.Add(typeof(IRequestActivity<GetAllTeamRequestEvent, GetAllTeamResponseEvent>),
+                new GetAllTeamByRequest(repositoryFactory.Create<ITeamRepository>()));
         }
 
         public T Create<T>()
