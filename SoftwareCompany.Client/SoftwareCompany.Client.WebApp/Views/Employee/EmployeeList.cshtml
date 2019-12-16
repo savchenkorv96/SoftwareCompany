@@ -1,0 +1,46 @@
+﻿@model SoftwareCompany.Client.WebApp.Models.EmployeeModel.GetAllEmployeeModelSuccess
+@using SoftwareCompany.Client.Common.Entities
+@using SoftwareCompany.Client.WebApp.Infrasctucture
+
+@{
+    ViewData["Title"] = "EmployeeList";
+}
+
+@{
+    @if (Context.Session.GetJson<Account>("account") == null)
+    {
+        Context.Response.Redirect("../Login");
+    }
+}
+
+<h1>EmployeeList</h1>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Account</th>
+        <th scope="col">Team</th>
+        <th scope="col">Position</th>
+        <th scope="col">Salary</th>
+        <th scope="col">DateOfEmployment</th>
+    </tr>
+    </thead>
+    <tbody>
+    @{
+        @foreach (var item in @Model.Employees)
+        {
+            <tr>
+                <th scope="row">@item.Id</th>
+                <td>(@item.Account.Id) @item.Account.Login</td>
+                <td>(@item.Team.Id) @item.Team.Name</td>
+                <td>@item.Position</td>
+                <td>@item.Salary.ToString("C")</td>
+                <td>@item.DateOfEmployment</td>
+            </tr>
+        }
+    }
+    </tbody>
+</table>
+
+
