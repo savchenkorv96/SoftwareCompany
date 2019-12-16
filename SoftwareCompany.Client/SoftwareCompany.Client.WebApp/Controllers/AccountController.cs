@@ -32,5 +32,23 @@ namespace SoftwareCompany.Client.WebApp.Controllers
             return View("Error", new GetAllAccountModelFailed(op));
 
         }
+
+        public IActionResult CreateAccountPage()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult CreateAccount(CreateAccountModel createAccountModel)
+        {
+            OperationStatusInfo operationStatusInfo = _hubEnvironment.ServerHubConnector.CreateAccount(createAccountModel.Account).Result;
+
+            if (operationStatusInfo.OperationStatus == OperationStatus.Done)
+            {
+                AccountList();
+            }
+
+            return View("CreateAccountPage",new CreateAccountModel(createAccountModel.Account));
+        }
     }
 }

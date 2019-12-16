@@ -1,0 +1,48 @@
+﻿@using SoftwareCompany.Client.Common.Enumerations
+@model SoftwareCompany.Client.WebApp.Models.AccountModel.CreateAccountModel
+@{
+    ViewData["Title"] = "CreateAccountPage";
+}
+
+<h1>Create Account Page</h1>
+
+<div class="container" style="width: 500px">
+    <form asp-controller="Account" asp-action="CreateAccount" method="post">
+        <div class="form-group">
+            <label>Login: </label>
+            <input asp-for="Account.Login" class="form-control" type="text">
+        </div>
+        <div class="form-group">
+            <label>Password:</label>
+            <input asp-for="Account.Password" class="form-control" type="password">
+        </div>
+        <div class="form-group">
+            <label>First Name:</label>
+            <input asp-for="Account.FirstName" class="form-control" type="text">
+        </div>
+        <div class="form-group">
+            <label>Last Name:</label>
+            <input asp-for="Account.LastName" class="form-control" type="text">
+        </div>
+        <div class="form-group">
+            <label>Phone:</label>
+            <input asp-for="Account.Phone" class="form-control" type="text">
+        </div>
+        <div class="form-group">
+            <label>Skype:</label>
+            <input asp-for="Account.Skype" class="form-control" type="text">
+        </div>
+        <div class="form-group">
+            <label>Email:</label>
+            <input asp-for="Account.Email" class="form-control" type="email">
+        </div>
+        <div class="form-group">
+            <label>Account Type:</label>
+            <select asp-for="Account.Type" asp-items="Html.GetEnumSelectList<AccountType>()" class="form-control">
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+</div>

@@ -17,14 +17,9 @@ namespace SoftwareCompany.Client.Core.HubConnectors.ServerHub
             return await _hubConnection.InvokeCoreAsync<OperationStatusInfo>("Login", new object[] {login, password});
         }
 
-        public async void CreateAccount(Account account)
+        public async Task<OperationStatusInfo> CreateAccount(Account account)
         {
-            await _hubConnection.InvokeCoreAsync<OperationStatusInfo>("CreateAccount", new object[] { account }).ContinueWith(
-                (data) =>
-                {
-                    var account = JsonConvert.DeserializeObject<Account>(data.Result.AttachedObject.ToString());
-                    Console.WriteLine($"{account.Id}\t{account.Login}\t{account.Password}");
-                });
+            return await _hubConnection.InvokeCoreAsync<OperationStatusInfo>("CreateAccount", new object[] { account });
         }
 
         public async Task<OperationStatusInfo> GetAllAccount()
