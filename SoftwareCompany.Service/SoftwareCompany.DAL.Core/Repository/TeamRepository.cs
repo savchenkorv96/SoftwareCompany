@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using SoftwareCompany.DAL.Common.Entities;
 using SoftwareCompany.DAL.Core.Repository.Contract;
@@ -18,17 +19,19 @@ namespace SoftwareCompany.DAL.Core.Repository
 
         public IEnumerable<Team> GetAll()
         {
-            throw new NotImplementedException();
+            return Teams.ToList();
         }
 
         public Team GetById(int id)
         {
-            throw new NotImplementedException();
+            return Teams.First(data => data.Id == id);
         }
 
         public bool Create(Team data)
         {
-            throw new NotImplementedException();
+            _context.Teams.Add(data);
+            _context.SaveChanges();
+            return true;
         }
 
         public bool Update(Team data)
