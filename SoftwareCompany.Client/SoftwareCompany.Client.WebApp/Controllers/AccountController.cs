@@ -29,7 +29,7 @@ namespace SoftwareCompany.Client.WebApp.Controllers
                 return View(new GetAllAccountModelSuccess(account));
             }
 
-            return View("Error", new GetAllAccountModelFailed(op));
+            return View("ErrorLoadList", new GetAllAccountModelFailed(op));
 
         }
 
@@ -45,10 +45,13 @@ namespace SoftwareCompany.Client.WebApp.Controllers
 
             if (operationStatusInfo.OperationStatus == OperationStatus.Done)
             {
-                AccountList();
+               return AccountList();
+            }
+            else
+            {
+                return View("CreateAccountPage", new CreateAccountModel(createAccountModel.Account));
             }
 
-            return View("CreateAccountPage",new CreateAccountModel(createAccountModel.Account));
         }
     }
 }
