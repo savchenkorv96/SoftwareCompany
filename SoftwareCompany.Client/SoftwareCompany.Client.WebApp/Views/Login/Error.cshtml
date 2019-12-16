@@ -1,0 +1,10 @@
+﻿@model LoginErrorModel
+@{
+    ViewData["Title"] = "Error";
+}
+
+<h1>Error</h1>
+<div class="alert alert-danger" role="alert">
+    @Model.OperationStatus.AttachedInfo
+</div>
+

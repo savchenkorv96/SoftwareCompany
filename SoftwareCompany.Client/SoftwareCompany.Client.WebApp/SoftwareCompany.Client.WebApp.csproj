@@ -5,6 +5,15 @@
     <StartupObject>SoftwareCompany.Client.WebApp.Program</StartupObject>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SoftwareCompany.Client.Core\SoftwareCompany.Client.Core.csproj" />
+  </ItemGroup>
+
 
 
 </Project>

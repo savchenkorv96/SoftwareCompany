@@ -1,0 +1,48 @@
+﻿@using SoftwareCompany.Client.Common.Entities
+@using SoftwareCompany.Client.WebApp.Infrasctucture
+@model SoftwareCompany.Client.WebApp.Models.AccountModel.GetAllAccountModelSuccess
+@{
+    ViewData["Title"] = "AccountList";
+}
+
+@{
+    @if (Context.Session.GetJson<Account>("account") == null)
+    {
+        Context.Response.Redirect("../Login");
+    }
+}
+
+<h1>AccountList</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Login</th>
+            <th scope="col">FirstName</th>
+            <th scope="col">LastName</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Skype</th>
+            <th scope="col">Email</th>
+            <th scope="col">Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            @foreach (var item in @Model.List)
+            {
+                <tr>
+                    <th scope="row">@item.Id</th>
+                    <td>@item.Login</td>
+                    <td>@item.FirstName</td>
+                    <td>@item.LastName</td>
+                    <td>@item.Phone</td>
+                    <td>@item.Skype</td>
+                    <td>@item.Email</td>
+                    <td>@item.Type</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+

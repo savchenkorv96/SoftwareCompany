@@ -7,11 +7,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{A965A04C-A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoftwareCompany.Client.Core", "SoftwareCompany.Client.Core\SoftwareCompany.Client.Core.csproj", "{00548C22-16F3-45BD-8A5B-7FA01C5DCEB5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftwareCompany.Client.ConsoleApp", "SoftwareCompany.Client.ConsoleApp\SoftwareCompany.Client.ConsoleApp.csproj", "{1CC034F5-9D23-40FE-8AC5-38619FD6F3E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoftwareCompany.Client.ConsoleApp", "SoftwareCompany.Client.ConsoleApp\SoftwareCompany.Client.ConsoleApp.csproj", "{1CC034F5-9D23-40FE-8AC5-38619FD6F3E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftwareCompany.Client.Common", "SoftwareCompany.Client.Common\SoftwareCompany.Client.Common.csproj", "{716C2DD1-3250-476E-AEBD-5C117228C91B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoftwareCompany.Client.Common", "SoftwareCompany.Client.Common\SoftwareCompany.Client.Common.csproj", "{716C2DD1-3250-476E-AEBD-5C117228C91B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftwareCompany.Client.WebApp", "SoftwareCompany.Client.WebApp\SoftwareCompany.Client.WebApp.csproj", "{35EF415C-8766-42E0-9F35-676E84ECEB84}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoftwareCompany.Client.WebApp", "SoftwareCompany.Client.WebApp\SoftwareCompany.Client.WebApp.csproj", "{35EF415C-8766-42E0-9F35-676E84ECEB84}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

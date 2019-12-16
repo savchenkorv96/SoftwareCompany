@@ -1,8 +1,65 @@
-﻿@{
+﻿@using SoftwareCompany.Client.Common.Entities
+@using SoftwareCompany.Client.WebApp.Infrasctucture
+@{
     ViewData["Title"] = "Home Page";
+}
+
+@{
+    @if (Context.Session.GetJson<Account>("account") == null)
+    {
+        Context.Response.Redirect("../Login");
+    }
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+<div class="container">
+    <div class="card m-2">
+        <h5 class="card-header">Account</h5>
+        <div class="card-body">
+            <h5 class="card-title">Account management</h5>
+            <a asp-action="Index" asp-controller="" class="btn btn-primary m-1">Create</a>
+            <a asp-action="AccountList" asp-controller="Account" class="btn btn-primary m-1">Get Account List</a>
+        </div>
+    </div>
+    <div class="card m-2">
+        <h5 class="card-header">Employee</h5>
+        <div class="card-body">
+            <h5 class="card-title">Employee management</h5>
+            <a asp-action="Index" asp-controller="" class="btn btn-primary m-1">Create</a>
+            <a asp-action="Index" asp-controller="" class="btn btn-primary m-1">Update</a>
+            <a asp-action="Index" asp-controller="" class="btn btn-primary m-1">Get Account By Id</a>
+            <a asp-action="Index" asp-controller="" class="btn btn-primary m-1">Get Account List</a>
+        </div>
+    </div>
+    <div class="card m-2">
+        <h5 class="card-header">Team</h5>
+        <div class="card-body">
+            <h5 class="card-title">Team management</h5>
+            <a asp-action="Index" asp-controller="" class="btn btn-primary m-1">Create</a>
+            <a asp-action="Index" asp-controller="" class="btn btn-primary m-1">Update</a>
+            <a asp-action="Index" asp-controller="" class="btn btn-primary m-1">Get Account By Id</a>
+            <a asp-action="Index" asp-controller="" class="btn btn-primary m-1">Get Account List</a>
+        </div>
+    </div>
+    <div class="card m-2">
+        <h5 class="card-header">Project</h5>
+        <div class="card-body">
+            <h5 class="card-title">Project management</h5>
+            <a asp-action="Index" asp-controller="" class="btn btn-primary m-1">Create</a>
+            <a asp-action="Index" asp-controller="" class="btn btn-primary m-1">Get Account List</a>
+        </div>
+    </div>
+    <div class="card m-2">
+        <h5 class="card-header">Task</h5>
+        <div class="card-body">
+            <h5 class="card-title">Task management</h5>
+            <a asp-action="Index" asp-controller="" class="btn btn-primary m-1">Create</a>
+            <a asp-action="Index" asp-controller="" class="btn btn-primary m-1">Update</a>
+            <a asp-action="Index" asp-controller="" class="btn btn-primary m-1">Get Account By Id</a>
+            <a asp-action="Index" asp-controller="" class="btn btn-primary m-1">Get Account List</a>
+        </div>
+    </div>
+
 </div>
