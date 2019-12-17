@@ -6,6 +6,7 @@ using SoftwareCompany.BLL.Activities.Activity.TeamActivity.GetAllTeam;
 using SoftwareCompany.BLL.Activities.Contracts;
 using SoftwareCompany.BLL.Core.Contract;
 using SoftwareCompany.BLL.Core.UseCases.AccountUseCase;
+using SoftwareCompany.BLL.Core.UseCases.CustomerUseCase;
 using SoftwareCompany.BLL.Core.UseCases.EmployeeUseCase;
 using SoftwareCompany.BLL.Core.UseCases.ProjectTaskUseCase;
 using SoftwareCompany.BLL.Core.UseCases.ProjectUseCase;
@@ -14,6 +15,8 @@ using SoftwareCompany.BLL.DomainEvents.AccountEvents.CreateAccountEvents;
 using SoftwareCompany.BLL.DomainEvents.AccountEvents.GetAccountByIdEvents;
 using SoftwareCompany.BLL.DomainEvents.AccountEvents.GetAllAccountEvents;
 using SoftwareCompany.BLL.DomainEvents.AccountEvents.LoginEvents;
+using SoftwareCompany.BLL.DomainEvents.CustomerEvents.GetAllCustomerEvent;
+using SoftwareCompany.BLL.DomainEvents.CustomerEvents.GetCustomerByIdEvent;
 using SoftwareCompany.BLL.DomainEvents.EmployeeEvents.CreateEmployeeEvents;
 using SoftwareCompany.BLL.DomainEvents.EmployeeEvents.GetAllEmployeeEvents;
 using SoftwareCompany.BLL.DomainEvents.EmployeeEvents.GetCountEmployeeByTeamIdEvents;
@@ -106,6 +109,12 @@ namespace SoftwareCompany.BLL.Core.Factory
                 new GetCountProjectTaskByProjectIdUseCase(activitiesFactory.Create<IRequestActivity<GetCountTaskByProjectIdRequestEvent, GetCountTaskByProjectIdResponseEvent>>()));
             this.collection.Add(typeof(IUseCase<GetCountSuccessTaskByProjectIdRequestEvent, GetCountSuccessTaskByProjectIdResponseEvent>),
                 new GetCountSuccessProjectTaskByProjectIdUseCase(activitiesFactory.Create<IRequestActivity<GetCountSuccessTaskByProjectIdRequestEvent, GetCountSuccessTaskByProjectIdResponseEvent>>()));
+
+
+            this.collection.Add(typeof(IUseCase<GetAllCustomerRequestEvent, GetAllCustomerResponseEvent>),
+                new GetAllCustomerUseCase(activitiesFactory.Create<IRequestActivity<GetAllCustomerRequestEvent, GetAllCustomerResponseEvent>>()));
+            this.collection.Add(typeof(IUseCase<GetCustomerByIdRequestEvent, GetCustomerByIdResponseEvent>),
+                new GetCustomerByIdUseCase(activitiesFactory.Create<IRequestActivity<GetCustomerByIdRequestEvent, GetCustomerByIdResponseEvent>>()));
 
 
         }
