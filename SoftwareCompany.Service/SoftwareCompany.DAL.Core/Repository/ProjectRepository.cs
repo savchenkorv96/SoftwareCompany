@@ -42,6 +42,12 @@ namespace SoftwareCompany.DAL.Core.Repository
 
         public bool Create(Project data)
         {
+            Employee employee = _context.Employees.First(row => row.Id == data.Manager.Id);
+            Customer customer = _context.Customers.First(row => row.Id == data.Customer.Id);
+            Team team = _context.Teams.First(row => row.Id == data.Team.Id);
+            data.Manager = employee;
+            data.Customer = customer;
+            data.Team = team;
             _context.Projects.Add(data);
             _context.SaveChanges();
             return true;

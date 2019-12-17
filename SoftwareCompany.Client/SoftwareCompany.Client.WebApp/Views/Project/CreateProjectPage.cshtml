@@ -1,0 +1,62 @@
+﻿@using SoftwareCompany.Client.Common.Enumerations
+@model SoftwareCompany.Client.WebApp.Models.ProjectModel.CreateProjectModel
+@{
+    ViewData["Title"] = "CreateProjectPage";
+}
+
+<h1>CreateProjectPage</h1>
+
+<div class="container" style="width: 500px">
+    <form asp-controller="Project" asp-action="CreateProject" method="post">
+        <div class="form-group">
+            <label>Title:</label>
+            <input asp-for="Project.Title" class="form-control" type="text">
+        </div>
+        <div class="form-group">
+            <label>Description:</label>
+            <input asp-for="Project.Description" class="form-control" type="text">
+        </div>
+        <div class="form-group">
+            <label>Account:</label>
+            <select asp-for="CustomerId" asp-items="@Model.Customers" class="form-control">
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Account:</label>
+            <select asp-for="TeamId" asp-items="@Model.Teams" class="form-control">
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Manager:</label>
+            <select asp-for="EmployeeId" asp-items="@Model.Employee" class="form-control">
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Project Type:</label>
+            <select asp-for="Project.Type" asp-items="Html.GetEnumSelectList<ProjectType>()" class="form-control">
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Project Status:</label>
+            <select asp-for="Project.Status" asp-items="Html.GetEnumSelectList<ProjectStatus>()" class="form-control">
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Start Time:</label>
+            <input asp-for="Project.StartTime"  value="@DateTime.Now" class="form-control" type="text">
+        </div>
+
+        <div class="form-group">
+            <label>End Time:</label>
+            <input asp-for="Project.EndTime" value="@DateTime.Now.AddDays(new Random().Next(50,400))" class="form-control" type="text">
+        </div>
+
+
+
+
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+</div>

@@ -58,5 +58,58 @@ namespace SoftwareCompany.Client.WebApp.Controllers
 
             return View(new GetProjectByTeamIdResultModel(projects));
         }
+
+        public IActionResult CreateProjectPage()
+        {
+            List<Customer> customers = JsonConvert
+                .DeserializeObject<IEnumerable<Customer>>(_hubEnvironment.ServerHubConnector.GetAllCustomer().Result.AttachedObject.ToString()
+                ).ToList();
+            List<Team> teams = JsonConvert
+                .DeserializeObject<IEnumerable<Team>>(_hubEnvironment.ServerHubConnector.GetAllTeam().Result.AttachedObject.ToString()
+                ).ToList();
+            List<Employee> employees = JsonConvert
+                .DeserializeObject<IEnumerable<Employee>>(_hubEnvironment.ServerHubConnector.GetAllEmployee().Result.AttachedObject.ToString()
+                ).ToList();
+
+            List<SelectListItem> selectCustomer = customers.Select(s => new SelectListItem
+            {
+                Value = s.Id.ToString(),
+                Text = $"{s.Account.FirstName} {s.Account.LastName} ({s.Account.Phone})"
+            }).ToList();
+
+            List<SelectListItem> selectTeam = teams.Select(s => new SelectListItem
+            {
+                Value = s.Id.ToString(),
+                Text = s.Name
+            }).ToList();
+
+            List<SelectListItem> selectEmployee = employees.Select(s => new SelectListItem
+            {
+                Value = s.Id.ToString(),
+                Text = $"{s.Account.FirstName} {s.Account.LastName} ({s.Account.Phone})"
+            }).ToList();
+
+            return View(new CreateProjectModel(new Project(), selectEmployee, selectCustomer, selectTeam));
+        }
+
+        public IActionResult CreateProject(CreateProjectModel createProjectModel)
+        {
+
+            Project project = createProjectModel.Project;
+            project.Manager = new Employee() { Id = createProjectModel.EmployeeId };
+            project.Customer = new Customer() { Id = createProjectModel.CustomerId };
+            project.Team = new Team() { Id = createProjectModel.TeamId };
+
+            OperationStatusInfo operationStatusInfo = _hubEnvironment.ServerHubConnector.CreateProject(project).Result;
+
+            if (operationStatusInfo.OperationStatus == OperationStatus.Done)
+            {
+                return ProjectList();
+            }
+            else
+            {
+                return CreateProjectPage();
+            }
+        }
     }
 }

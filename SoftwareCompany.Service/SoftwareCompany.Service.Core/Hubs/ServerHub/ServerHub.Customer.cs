@@ -38,7 +38,7 @@ namespace SoftwareCompany.Service.Core.Hubs.ServerHub
             });
         }
 
-        public async Task<OperationStatusInfo> GetCustomerId(int id)
+        public async Task<OperationStatusInfo> GetCustomerById(int id)
         {
             return await Task.Run(() =>
             {
