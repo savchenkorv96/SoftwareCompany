@@ -1,0 +1,39 @@
+﻿@model SoftwareCompany.Client.WebApp.Models.TeamModel.GetAllTeamModelSuccess
+@using SoftwareCompany.Client.Common.Entities
+@using SoftwareCompany.Client.WebApp.Infrasctucture
+
+@{
+    ViewData["Title"] = "TeamList";
+}
+
+@{
+    @if (Context.Session.GetJson<Account>("account") == null)
+    {
+        Context.Response.Redirect("../Login");
+    }
+}
+
+<h1>TeamList</h1>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    @{
+        @foreach (var item in @Model.Teams)
+        {
+            <tr>
+                <th scope="row">@item.Id</th>
+                <td>@item.Name</td>
+                <td>@item.Description</td>
+            </tr>
+        }
+    }
+    </tbody>
+</table>
+

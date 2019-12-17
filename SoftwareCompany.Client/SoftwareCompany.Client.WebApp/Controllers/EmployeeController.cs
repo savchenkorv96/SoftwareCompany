@@ -62,12 +62,10 @@ namespace SoftwareCompany.Client.WebApp.Controllers
         [HttpPost]
         public IActionResult CreateEmployee(CreateEmployeeModel createEmployeeModel)
         {
-            Account account = JsonConvert.DeserializeObject<Account>(_hubEnvironment.ServerHubConnector.GetAccountById(createEmployeeModel.AccountId).Result.AttachedObject.ToString());
-            Team team = JsonConvert.DeserializeObject<Team>(_hubEnvironment.ServerHubConnector.GetTeamById(createEmployeeModel.TeamId).Result.AttachedObject.ToString());
-
+           
             Employee employee = createEmployeeModel.Employee;
-            employee.Account = account;
-            employee.Team = team;
+            employee.Account = new Account(){Id = createEmployeeModel.AccountId};
+            employee.Team = new Team(){Id = createEmployeeModel.TeamId};
             employee.DateOfEmployment = DateTime.Now;
 
             OperationStatusInfo operationStatusInfo = _hubEnvironment.ServerHubConnector.CreateEmployee(employee).Result;
