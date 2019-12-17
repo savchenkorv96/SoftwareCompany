@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using Microsoft.EntityFrameworkCore;
 using SoftwareCompany.DAL.Common.Entities;
 using SoftwareCompany.DAL.Core.Repository.Contract;
 
@@ -9,7 +11,7 @@ namespace SoftwareCompany.DAL.Core.Repository
     public class CustomerRepository : ICustomerRepository
     {
         private readonly ApplicationDbContext _context;
-        public IEnumerable<Customer> Customers => _context.Customers;
+        public IEnumerable<Customer> Customers => _context.Set<Customer>().Include(x => x.Account).Include(x=>x.Company);
 
         public CustomerRepository(ApplicationDbContext context)
         {
@@ -18,12 +20,12 @@ namespace SoftwareCompany.DAL.Core.Repository
 
         public IEnumerable<Customer> GetAll()
         {
-            throw new NotImplementedException();
+            return Customers.ToList();
         }
 
         public Customer GetById(int id)
         {
-            throw new NotImplementedException();
+            return Customers.First(data => data.Id == id);
         }
 
         public bool Create(Customer data)

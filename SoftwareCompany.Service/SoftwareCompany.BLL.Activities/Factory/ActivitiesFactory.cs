@@ -5,6 +5,8 @@ using SoftwareCompany.BLL.Activities.Activity.AccountActivity.CreateAccount;
 using SoftwareCompany.BLL.Activities.Activity.AccountActivity.GetAccount;
 using SoftwareCompany.BLL.Activities.Activity.AccountActivity.GetAllAccount;
 using SoftwareCompany.BLL.Activities.Activity.AccountActivity.Login;
+using SoftwareCompany.BLL.Activities.Activity.CustomerActivity.GetAllCustomer;
+using SoftwareCompany.BLL.Activities.Activity.CustomerActivity.GetCustomer;
 using SoftwareCompany.BLL.Activities.Activity.EmployeeActivity.CreateEmployee;
 using SoftwareCompany.BLL.Activities.Activity.EmployeeActivity.GetAllEmployee;
 using SoftwareCompany.BLL.Activities.Activity.EmployeeActivity.GetCountEmployeeById;
@@ -28,6 +30,8 @@ using SoftwareCompany.BLL.DomainEvents.AccountEvents.CreateAccountEvents;
 using SoftwareCompany.BLL.DomainEvents.AccountEvents.GetAccountByIdEvents;
 using SoftwareCompany.BLL.DomainEvents.AccountEvents.GetAllAccountEvents;
 using SoftwareCompany.BLL.DomainEvents.AccountEvents.LoginEvents;
+using SoftwareCompany.BLL.DomainEvents.CustomerEvents.GetAllCustomerEvent;
+using SoftwareCompany.BLL.DomainEvents.CustomerEvents.GetCustomerByIdEvent;
 using SoftwareCompany.BLL.DomainEvents.EmployeeEvents.CreateEmployeeEvents;
 using SoftwareCompany.BLL.DomainEvents.EmployeeEvents.GetAllEmployeeEvents;
 using SoftwareCompany.BLL.DomainEvents.EmployeeEvents.GetCountEmployeeByTeamIdEvents;
@@ -100,6 +104,10 @@ namespace SoftwareCompany.BLL.Activities.Factory
             this.ruleCollection.Add(typeof(IRequestActivity<GetTaskListByEmployeeIdRequestEvent, GetTaskListByEmployeeIdResponseEvent>), new GetTaskByEmployeeId(repositoryFactory.Create<IProjectTaskRepository>()));
             this.ruleCollection.Add(typeof(IRequestActivity<GetCountTaskByProjectIdRequestEvent, GetCountTaskByProjectIdResponseEvent>), new GetCountProjectTaskByProjectId(repositoryFactory.Create<IProjectTaskRepository>()));
             this.ruleCollection.Add(typeof(IRequestActivity<GetCountSuccessTaskByProjectIdRequestEvent, GetCountSuccessTaskByProjectIdResponseEvent>), new GetCountSuccessProjectTaskByProjectId(repositoryFactory.Create<IProjectTaskRepository>()));
+            
+            
+            this.ruleCollection.Add(typeof(IRequestActivity<GetAllCustomerRequestEvent, GetAllCustomerResponseEvent>), new GetAllCustomerByRequest(repositoryFactory.Create<ICustomerRepository>()));
+            this.ruleCollection.Add(typeof(IRequestActivity<GetCustomerByIdRequestEvent, GetCustomerByIdResponseEvent>), new GetCustomerById(repositoryFactory.Create<ICustomerRepository>()));
 
         }
 
