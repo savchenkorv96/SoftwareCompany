@@ -29,7 +29,7 @@ namespace SoftwareCompany.Client.Core.HubConnectors.ServerHub
 
         public async Task<OperationStatusInfo> GetAccountById(int accountId)
         {
-            return await _hubConnection.InvokeCoreAsync<OperationStatusInfo>("GetAllAccount", new object[] { accountId });
+            return await _hubConnection.InvokeCoreAsync<OperationStatusInfo>("GetAccountById", new object[] { accountId });
         }
     }
 }

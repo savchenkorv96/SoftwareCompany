@@ -10,18 +10,20 @@ namespace SoftwareCompany.Client.WebApp.Models.EmployeeModel
     public class CreateEmployeeModel
     {
         public Employee Employee { get; set; }
-        public string test1 { get; set; }
-        public string test2{ get; set; }
-        public IEnumerable<SelectListItem> Accounts { get; set; }
-        public IEnumerable<SelectListItem> Teams { get; set; }
+        public int AccountId { get; set; }
+        public int TeamId { get; set; }
+        public List<SelectListItem> Accounts { get; set; }
+        public List<SelectListItem> Teams { get; set; }
 
         public CreateEmployeeModel()
         {
+           
         }
 
-        public CreateEmployeeModel(Employee employee, IEnumerable<SelectListItem> accounts, IEnumerable<SelectListItem> teams)
+        public CreateEmployeeModel( List<SelectListItem> accounts, List<SelectListItem> teams)
         {
-            this.Employee = employee;
+            Accounts = accounts;
+            Teams = teams;
         }
     }
 }

@@ -16,8 +16,6 @@ namespace SoftwareCompany.DAL.Core.Repository
         public EmployeeRepository(ApplicationDbContext context)
         {
             _context = context;
-            _context.Set<Employee>().Include(x => x.Account);
-            _context.Set<Employee>().Include(x => x.Team);
         }
 
         public IEnumerable<Employee> GetAll()
@@ -32,6 +30,10 @@ namespace SoftwareCompany.DAL.Core.Repository
 
         public bool Create(Employee data)
         {
+            Account account = _context.Accounts.First(row=>row.Id==data.Account.Id);
+            Team team = _context.Teams.First(row=>row.Id==data.Team.Id);
+            data.Account = account;
+            data.Team = team;
             _context.Employees.Add(data);
             _context.SaveChanges();
             return true;

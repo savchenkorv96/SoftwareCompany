@@ -44,25 +44,33 @@ namespace SoftwareCompany.Client.WebApp.Controllers
                 .DeserializeObject<IEnumerable<Team>>(_hubEnvironment.ServerHubConnector.GetAllTeam().Result.AttachedObject.ToString()
                 ).ToList();
 
-            IEnumerable< SelectListItem > SelectAccount = accounts.Select(s => new SelectListItem
+            List< SelectListItem > selectAccount = accounts.Select(s => new SelectListItem
             {
                 Value = s.Id.ToString(),
-                Text = s.Id + " | " + s.Login
-            });
+                Text = $"{s.FirstName} {s.LastName}"
+            }).ToList();
 
-            IEnumerable<SelectListItem> SelectTeam = teams.Select(s => new SelectListItem
+            List<SelectListItem> selectTeam = teams.Select(s => new SelectListItem
             {
                 Value = s.Id.ToString(),
-                Text = s.Id + " | " + s.Name
-            });
+                Text = s.Name
+            }).ToList();
 
-            return View(new CreateEmployeeModel(new Employee(),SelectAccount,SelectTeam ));
+            return View(new CreateEmployeeModel(selectAccount,selectTeam ));
         }
 
         [HttpPost]
         public IActionResult CreateEmployee(CreateEmployeeModel createEmployeeModel)
         {
-            OperationStatusInfo operationStatusInfo = _hubEnvironment.ServerHubConnector.CreateEmployee(createEmployeeModel.Employee).Result;
+            Account account = JsonConvert.DeserializeObject<Account>(_hubEnvironment.ServerHubConnector.GetAccountById(createEmployeeModel.AccountId).Result.AttachedObject.ToString());
+            Team team = JsonConvert.DeserializeObject<Team>(_hubEnvironment.ServerHubConnector.GetTeamById(createEmployeeModel.TeamId).Result.AttachedObject.ToString());
+
+            Employee employee = createEmployeeModel.Employee;
+            employee.Account = account;
+            employee.Team = team;
+            employee.DateOfEmployment = DateTime.Now;
+
+            OperationStatusInfo operationStatusInfo = _hubEnvironment.ServerHubConnector.CreateEmployee(employee).Result;
 
             if (operationStatusInfo.OperationStatus == OperationStatus.Done)
             {
