@@ -1,0 +1,21 @@
+﻿@model SoftwareCompany.Client.WebApp.Models.ProjectModel.GetProjectByTeamIdModel
+@{
+    ViewData["Title"] = "GetProjectByTeamIdPage";
+}
+
+<h1>GetProjectByTeamIdPage</h1>
+
+<div class="container">
+    <form asp-controller="Project" asp-action="GetProjectByTeamIdList">
+        <div class="form-group">
+            <div class="form-group">
+                <label>Team:</label>
+                <select asp-for="TeamId" asp-items="@Model.Teams" class="form-control">
+                </select>
+            </div>
+            
+            <button type="submit">Get</button>
+        </div>
+    </form>
+</div>
+

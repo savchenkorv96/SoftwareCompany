@@ -1,0 +1,71 @@
+﻿@using SoftwareCompany.Client.Common.Entities
+@using SoftwareCompany.Client.Common.Enumerations
+@using SoftwareCompany.Client.WebApp.Infrasctucture
+@model SoftwareCompany.Client.WebApp.Models.ProjectModel.GetAllProjectModelSuccess
+@{
+    ViewData["Title"] = "ProjectList";
+}
+@{
+    @if (Context.Session.GetJson<Account>("account") == null)
+    {
+        Context.Response.Redirect("../Login");
+    }
+}
+
+<h1>ProjectList</h1>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Customer</th>
+        <th scope="col">Manager</th>
+        <th scope="col">Team</th>
+        <th scope="col">StartTime</th>
+        <th scope="col">EndTime</th>
+        <th scope="col">Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    @{
+        @foreach (var item in @Model.Projects)
+        {
+            <tr>
+                <th scope="row">@item.Id</th>
+                <td>@item.Title</td>
+                <td>@item.Description</td>
+                <td>@item.Customer.Account.LastName @item.Customer.Company.Description</td>
+                <td>@item.Manager.Account.LastName (@item.Manager.Position)</td>
+                <td>@item.Team.Name</td>
+                <td>@item.StartTime</td>
+                <td>@item.EndTime</td>
+                <td>
+                    @{
+                        @if (@item.Status == ProjectStatus.New)
+                        {
+                            <span class="badge badge-success">New</span>
+                        }
+                        @if (@item.Status == ProjectStatus.Open)
+                        {
+                            <span class="badge badge-primary">Open</span>
+                        }
+                        @if (@item.Status == ProjectStatus.Closed)
+                        {
+                            <span class="badge badge-danger">Open</span>
+                        }
+                        @if (@item.Status == ProjectStatus.Closed)
+                        {
+                <span class="badge badge-secondary">Closed</span>
+                        }
+
+                    }
+                </td>
+            </tr>
+        }
+    }
+    </tbody>
+</table>
+
+

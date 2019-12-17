@@ -14,8 +14,9 @@ namespace SoftwareCompany.DAL.Core.Repository
 
         public IEnumerable<Project> Projects =>
             _context.Set<Project>().Include(x => x.Team)
-                .Include(x => x.Customer)
-                .Include(x => x.Manager)
+                .Include(x => x.Customer).ThenInclude(x=>x.Company)
+                .Include(x => x.Customer).ThenInclude(x=>x.Account)
+                .Include(x => x.Manager).ThenInclude(x=>x.Account)
                 .ToList();
 
         public ProjectRepository(ApplicationDbContext context)

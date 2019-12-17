@@ -49,18 +49,23 @@
         <h5 class="card-header">Project</h5>
         <div class="card-body">
             <h5 class="card-title">Project management</h5>
-            <a asp-action="Index" asp-controller="" class="btn btn-primary m-1">Create</a>
-            <a asp-action="Index" asp-controller="" class="btn btn-primary m-1">Get Account List</a>
+            <a asp-action="" asp-controller="Project" class="btn btn-primary m-1">Create Project</a>
+            <a asp-action="" asp-controller="Project" class="btn btn-primary m-1">Update Project</a>
+            <a asp-action="ProjectList" asp-controller="Project" class="btn btn-primary m-1">Get Project List</a>
+            <a asp-action="GetProjectByteamIdPage" asp-controller="Project" class="btn btn-primary m-1">Get Project By Team Id</a>
         </div>
     </div>
     <div class="card m-2">
         <h5 class="card-header">Task</h5>
         <div class="card-body">
             <h5 class="card-title">Task management</h5>
-            <a asp-action="Index" asp-controller="" class="btn btn-primary m-1">Create</a>
-            <a asp-action="Index" asp-controller="" class="btn btn-primary m-1">Update</a>
-            <a asp-action="Index" asp-controller="" class="btn btn-primary m-1">Get Account By Id</a>
-            <a asp-action="Index" asp-controller="" class="btn btn-primary m-1">Get Account List</a>
+            <a asp-action="Index" asp-controller="" class="btn btn-primary m-1">Create Task</a>
+            <a asp-action="Index" asp-controller="" class="btn btn-primary m-1">Update Task</a>
+            <a asp-action="Index" asp-controller="" class="btn btn-primary m-1">Get All Task</a>
+            <a asp-action="Index" asp-controller="" class="btn btn-primary m-1">Get Project Task By Employee Id</a>
+            <a asp-action="Index" asp-controller="" class="btn btn-primary m-1">Get Count Project Task By Project Id</a>
+            <a asp-action="Index" asp-controller="" class="btn btn-primary m-1">Get Count Success Project Task By Project Id</a>
+            <a asp-action="Index" asp-controller="" class="btn btn-primary m-1">Get Percent Success Project Task By Project Id</a>
         </div>
     </div>
 
