@@ -9,7 +9,7 @@ using SoftwareCompany.DAL.Common.Entities;
 
 namespace SoftwareCompany.BLL.Activities.Activity.AccountActivity.Login
 {
-    class GetAccountByRequest : IRequestActivity<LoginRequestEvent, LoginResponseEvent>
+    public class GetAccountByRequest : IRequestActivity<LoginRequestEvent, LoginResponseEvent>
     {
         private readonly IAccountRepository _accountRepository;
         public GetAccountByRequest(IAccountRepository accountRepository)

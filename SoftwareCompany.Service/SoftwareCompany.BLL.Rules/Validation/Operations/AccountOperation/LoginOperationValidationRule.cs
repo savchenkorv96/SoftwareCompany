@@ -8,7 +8,7 @@ using SoftwareCompany.DAL.Common.Entities;
 
 namespace SoftwareCompany.BLL.Rules.Validation.Operations.AccountOperation
 {
-    class LoginOperationValidationRule : ILoginOperationValidationRule
+    public class LoginOperationValidationRule : ILoginOperationValidationRule
     {
         private readonly LoginValidationRule loginValidationRule;
         private readonly PasswordValidationRule passwordValidationRule;

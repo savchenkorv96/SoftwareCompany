@@ -10,7 +10,7 @@ namespace SoftwareCompany.DAL.Core.Repository
     public class AccountRepository : IAccountRepository
     {
         private readonly ApplicationDbContext _context;
-        public IEnumerable<Account> Accounts => _context.Accounts;
+        public virtual IEnumerable<Account> Accounts => _context.Accounts;
 
         public AccountRepository(ApplicationDbContext context)
         {
