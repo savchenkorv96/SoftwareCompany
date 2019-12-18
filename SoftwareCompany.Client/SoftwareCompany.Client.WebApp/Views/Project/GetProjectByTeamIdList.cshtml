@@ -18,43 +18,47 @@
         <th scope="col">StartTime</th>
         <th scope="col">EndTime</th>
         <th scope="col">Status</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
     </tr>
     </thead>
     <tbody>
     @{
         @foreach (var item in @Model.Projects)
         {
-            <tr>
-                <th scope="row">@item.Id</th>
-                <td>@item.Title</td>
-                <td>@item.Description</td>
-                <td>@item.Customer.Account.LastName @item.Customer.Company.Description</td>
-                <td>@item.Manager.Account.LastName (@item.Manager.Position)</td>
-                <td>@item.Team.Name</td>
-                <td>@item.StartTime</td>
-                <td>@item.EndTime</td>
-                <td>
-                    @{
-                        @if (@item.Status == ProjectStatus.New)
-                        {
-                            <span class="badge badge-success">New</span>
-                        }
-                        @if (@item.Status == ProjectStatus.Open)
-                        {
-                            <span class="badge badge-primary">Open</span>
-                        }
-                        @if (@item.Status == ProjectStatus.Closed)
-                        {
-                            <span class="badge badge-danger">Open</span>
-                        }
-                        @if (@item.Status == ProjectStatus.Closed)
-                        {
-                            <span class="badge badge-secondary">Closed</span>
-                        }
-
+        <tr>
+            <th scope="row">@item.Id</th>
+            <td>@item.Title</td>
+            <td>@item.Description</td>
+            <td>@item.Customer.Account.LastName @item.Customer.Company.Description</td>
+            <td>@item.Manager.Account.LastName (@item.Manager.Position)</td>
+            <td>@item.Team.Name</td>
+            <td>@item.StartTime</td>
+            <td>@item.EndTime</td>
+            <td>
+                @{
+                    @if (@item.Status == ProjectStatus.New)
+                    {
+                        <span class="badge badge-success">New</span>
                     }
-                </td>
-            </tr>
+                    @if (@item.Status == ProjectStatus.Open)
+                    {
+                        <span class="badge badge-primary">Open</span>
+                    }
+                    @if (@item.Status == ProjectStatus.Closed)
+                    {
+                        <span class="badge badge-danger">Open</span>
+                    }
+                    @if (@item.Status == ProjectStatus.Closed)
+                    {
+                        <span class="badge badge-secondary">Closed</span>
+                    }
+
+                }
+            </td>
+            <td><button type="button" class="btn btn-outline-primary">Edit</button></td>
+            <td><button type="button" class="btn btn-outline-danger">Delete</button></td>
+        </tr>
         }
     }
     </tbody>

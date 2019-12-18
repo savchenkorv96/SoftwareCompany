@@ -1,0 +1,10 @@
+﻿@model SoftwareCompany.Client.WebApp.Models.TaskModel.GetAllTaskModelFailed
+@{
+    ViewData["Title"] = "ErrorLoadList";
+}
+
+<h1>ErrorLoadList</h1>
+
+<div class="alert alert-danger" role="alert">
+    @Model.operationStatusInfo.AttachedInfo
+</div>

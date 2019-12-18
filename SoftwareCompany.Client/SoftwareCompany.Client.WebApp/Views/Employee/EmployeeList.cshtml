@@ -24,20 +24,24 @@
         <th scope="col">Position</th>
         <th scope="col">Salary</th>
         <th scope="col">DateOfEmployment</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
     </tr>
     </thead>
     <tbody>
     @{
         @foreach (var item in @Model.Employees)
         {
-            <tr>
-                <th scope="row">@item.Id</th>
-                <td>(@item.Account.Id) @item.Account.Login</td>
-                <td>(@item.Team.Id) @item.Team.Name</td>
-                <td>@item.Position</td>
-                <td>@item.Salary.ToString("C")</td>
-                <td>@item.DateOfEmployment</td>
-            </tr>
+        <tr>
+            <th scope="row">@item.Id</th>
+            <td>(@item.Account.Id) @item.Account.Login</td>
+            <td>(@item.Team.Id) @item.Team.Name</td>
+            <td>@item.Position</td>
+            <td>@item.Salary.ToString("C")</td>
+            <td>@item.DateOfEmployment</td>
+            <td><button type="button" class="btn btn-outline-primary">Edit</button></td>
+            <td><button type="button" class="btn btn-outline-danger">Delete</button></td>
+        </tr>
         }
     }
     </tbody>

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+
+using Microsoft.EntityFrameworkCore;
 using SoftwareCompany.DAL.Common.Entities;
 using SoftwareCompany.DAL.Common.Enumerations;
 using SoftwareCompany.DAL.Core.Repository.Contract;
@@ -11,8 +13,13 @@ namespace SoftwareCompany.DAL.Core.Repository
     public class ProjectTaskRepository : IProjectTaskRepository
     {
         private readonly ApplicationDbContext _context;
-        public IEnumerable<ProjectTask> Tasks => _context.Tasks;
+        public IEnumerable<ProjectTask> Tasks => _context.Set<ProjectTask>()
+            .Include(x => x.Employee).ThenInclude(x=>x.Account)
+            .Include(x => x.Project).ThenInclude(x=>x.Team)
+            .Include(x => x.Project).ThenInclude(x=>x.Customer)
+            .Include(x => x.Project).ThenInclude(x=>x.Manager)
 
+            .ToList();
         public ProjectTaskRepository(ApplicationDbContext context)
         {
             _context = context;
