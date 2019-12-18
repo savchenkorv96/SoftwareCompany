@@ -69,7 +69,12 @@
 
                     }
                 </td>
-                <td><button type="button" class="btn btn-outline-primary">Edit</button></td>
+                <td>
+                    <form asp-controller="Task" asp-action="UpdateTaskByIdPage">
+                        <input type="hidden" name="TaskId" value="@item.Id"/>
+                        <button type="submit" class="btn btn-outline-primary">Edit</button>
+                    </form>
+                </td>
                 <td><button type="button" class="btn btn-outline-danger">Delete</button></td>
             </tr>
         }

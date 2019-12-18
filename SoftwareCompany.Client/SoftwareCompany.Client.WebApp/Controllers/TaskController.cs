@@ -182,5 +182,54 @@ namespace SoftwareCompany.Client.WebApp.Controllers
 
             return View(new GetPercentProjectTaskByProjectIdResultModel(projects));
         }
+
+        [HttpPost]
+        public IActionResult UpdateTaskByIdPage(int taskId)
+        {
+            ProjectTask task = JsonConvert
+                .DeserializeObject<ProjectTask>(_hubEnvironment.ServerHubConnector.GetProjectTaskById(taskId).Result.AttachedObject.ToString()
+                );
+
+            List<Employee> employees = JsonConvert
+                .DeserializeObject<IEnumerable<Employee>>(_hubEnvironment.ServerHubConnector.GetAllEmployee().Result.AttachedObject.ToString()
+                ).ToList();
+
+            List<Project> projects = JsonConvert
+                .DeserializeObject<IEnumerable<Project>>(_hubEnvironment.ServerHubConnector.GetAllProject().Result.AttachedObject.ToString()
+                ).ToList();
+
+            List<SelectListItem> selectEmployee = employees.Select(s => new SelectListItem
+            {
+                Value = s.Id.ToString(),
+                Text = $"{s.Account.FirstName} {s.Account.LastName}"
+            }).ToList();
+
+            List<SelectListItem> selectProject = projects.Select(s => new SelectListItem
+            {
+                Value = s.Id.ToString(),
+                Text = $"Title:{s.Title} Team:({s.Team.Name})"
+            }).ToList();
+
+            return View(new UpdateTaskModel(task,task.Project.Id,task.Employee.Id,selectEmployee,selectProject));
+        }
+
+        [HttpPost]
+        public IActionResult UpdateTaskById(UpdateTaskModel model)
+        {
+            ProjectTask projectTask = model.ProjectTask;
+            projectTask.Employee = new Employee() { Id = model.EmployeeId };
+            projectTask.Project = new Project() { Id = model.ProjectId };
+
+            OperationStatusInfo operationStatusInfo = _hubEnvironment.ServerHubConnector.UpdateProjectTask(projectTask).Result;
+
+            if (operationStatusInfo.OperationStatus == OperationStatus.Done)
+            {
+                return RedirectToAction("TaskList");
+            }
+            else
+            {
+                return RedirectToAction("UpdateTaskByIdPage");
+            }
+        }
     }
 }

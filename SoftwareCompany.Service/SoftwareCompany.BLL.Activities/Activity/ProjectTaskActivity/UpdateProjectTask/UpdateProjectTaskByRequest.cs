@@ -4,6 +4,7 @@ using System.Text;
 using SoftwareCompany.BLL.Activities.Contracts;
 using SoftwareCompany.BLL.DomainEvents.ProjectTaskEvents.CreateProjectTaskEvent;
 using SoftwareCompany.BLL.DomainEvents.ProjectTaskEvents.UpdateProjectTaskEvent;
+using SoftwareCompany.DAL.Common.Enumerations;
 using SoftwareCompany.DAL.Core.Repository.Contract;
 
 namespace SoftwareCompany.BLL.Activities.Activity.ProjectTaskActivity.UpdateProjectTask
@@ -22,6 +23,10 @@ namespace SoftwareCompany.BLL.Activities.Activity.ProjectTaskActivity.UpdateProj
 
             try
             {
+                if (request.ProjectTask.Status == TaskStatus.Closed)
+                {
+                    request.ProjectTask.ActualTile = DateTime.Now;
+                }
                 bool status = _projectTaskRepository.Update(request.ProjectTask);
                 response = new UpdateProjectTaskResponseEvent(status);
             }

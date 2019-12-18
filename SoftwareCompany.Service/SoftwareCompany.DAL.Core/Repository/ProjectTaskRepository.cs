@@ -62,8 +62,16 @@ namespace SoftwareCompany.DAL.Core.Repository
 
         public bool Update(ProjectTask data)
         {
-            ProjectTask Old = GetById(data.Id);
-            Old = data;
+            ProjectTask Old = Tasks.First(row=>row.Id == data.Id);
+
+            Old.Title = data.Title;
+            Old.ActualTile = data.ActualTile;
+            Old.Description = data.Description;
+            Old.Complexity = data.Complexity;
+            Old.Deadline = data.Deadline;
+            Old.Employee = _context.Employees.First(row => row.Id == data.Employee.Id);
+            Old.Project = _context.Projects.First(row => row.Id == data.Project.Id);
+            Old.Status = data.Status;
             _context.SaveChanges();
             return true;
         }
