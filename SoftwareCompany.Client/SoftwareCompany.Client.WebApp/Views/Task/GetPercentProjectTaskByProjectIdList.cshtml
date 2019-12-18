@@ -1,0 +1,105 @@
+﻿@using System.Security.Cryptography.X509Certificates
+@using SoftwareCompany.Client.Common.Entities
+@using SoftwareCompany.Client.WebApp.Infrasctucture
+@using TaskStatus = SoftwareCompany.Client.Common.Enumerations.TaskStatus
+@model SoftwareCompany.Client.WebApp.Models.TaskModel.GetPercentProjectTaskByProjectIdResultModel
+
+@{
+    ViewData["Title"] = "GetPercentProjectTaskByProjectIdList";
+}
+@{
+    @if (Context.Session.GetJson<Account>("account") == null)
+    {
+        Context.Response.Redirect("../Login");
+    }
+}
+<h1>GetPercentProjectTaskByProjectIdList</h1>
+
+<div>
+    @{
+        var allTask = @Model.ProjectTask.Count();
+        var allClosedTask = @Model.ProjectTask.Count(data => data.Status == TaskStatus.Closed);
+
+        double percent = 0.0;
+
+        if (allTask != 0 || allClosedTask != 0)
+        {
+           percent =  ((double)allClosedTask / (double)allTask)*100;
+        }
+        <button type="button" class="btn btn-danger">
+            Count All Task: <span class="badge badge-light"><b>@allTask</b></span>
+        </button>
+
+        <button type="button" class="btn btn-success">
+            Count Closed Task: <span class="badge badge-light"><b>@allClosedTask</b></span>
+        </button>
+
+        <button type="button" class="btn btn-warning">
+            Percent Closed Task: <span class="badge badge-light"><b>@percent.ToString("N0") %</b></span>
+        </button>
+    }
+</div>
+<br />
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Project</th>
+            <th scope="col">Employee</th>
+            <th scope="col">Deadline</th>
+            <th scope="col">Complexity</th>
+            <th scope="col">Status</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            @foreach (var item in @Model.ProjectTask)
+            {
+                <tr>
+                    <th scope="row">@item.Id</th>
+                    <td>@item.Title</td>
+                    <td>@item.Description</td>
+                    <td>@item.Project.Title</td>
+                    <td>@item.Employee.Account.Login</td>
+                    <td>@item.Deadline</td>
+                    <td>@item.Complexity</td>
+                    <td>
+                        @{
+                            @if (@item.Status == SoftwareCompany.Client.Common.Enumerations.TaskStatus.Open)
+                            {
+                                <span class="badge badge-danger">Open</span>
+                            }
+                            @if (@item.Status == SoftwareCompany.Client.Common.Enumerations.TaskStatus.InProgress)
+                            {
+                                <span class="badge badge-primary">InProgress</span>
+                            }
+                            @if (@item.Status == SoftwareCompany.Client.Common.Enumerations.TaskStatus.ToBeTested)
+                            {
+                                <span class="badge badge-secondary">ToBeTested</span>
+                            }
+                            @if (@item.Status == SoftwareCompany.Client.Common.Enumerations.TaskStatus.InTest)
+                            {
+                                <span class="badge badge-primary">InTest</span>
+                            }
+                            @if (@item.Status == SoftwareCompany.Client.Common.Enumerations.TaskStatus.Closed)
+                            {
+                                <span class="badge badge-success">Closed</span>
+                            }
+                            @if (@item.Status == TaskStatus.Reopen)
+                            {
+                                <span class="badge badge-danger">Reopen</span>
+                            }
+
+                        }
+                    </td>
+                    <td><button type="button" class="btn btn-outline-primary">Edit</button></td>
+                    <td><button type="button" class="btn btn-outline-danger">Delete</button></td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

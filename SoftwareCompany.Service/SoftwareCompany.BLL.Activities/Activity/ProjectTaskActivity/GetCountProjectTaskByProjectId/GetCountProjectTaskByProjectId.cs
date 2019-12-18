@@ -4,6 +4,7 @@ using System.Text;
 using SoftwareCompany.BLL.Activities.Contracts;
 using SoftwareCompany.BLL.DomainEvents.ProjectTaskEvents.GetCountSuccessTaskByProjectIdEvent;
 using SoftwareCompany.BLL.DomainEvents.ProjectTaskEvents.GetCountTaskByProjectIdEvent;
+using SoftwareCompany.DAL.Common.Entities;
 using SoftwareCompany.DAL.Core.Repository.Contract;
 
 namespace SoftwareCompany.BLL.Activities.Activity.ProjectTaskActivity.GetCountProjectTaskByProjectId
@@ -22,8 +23,8 @@ namespace SoftwareCompany.BLL.Activities.Activity.ProjectTaskActivity.GetCountPr
 
             try
             {
-                int countSuccessTask = _projectTaskRepository.GetCountTaskByProjectId(request.ProjectId);
-                response = new GetCountTaskByProjectIdResponseEvent(countSuccessTask);
+                IEnumerable < ProjectTask > tasks = _projectTaskRepository.GetCountTaskByProjectId(request.ProjectId);
+                response = new GetCountTaskByProjectIdResponseEvent(tasks);
             }
             catch (Exception ex)
             {

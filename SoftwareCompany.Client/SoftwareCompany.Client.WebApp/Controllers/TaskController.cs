@@ -104,5 +104,83 @@ namespace SoftwareCompany.Client.WebApp.Controllers
 
             return View(new GetProjectTaskByEmployeeIdResultModel(projects));
         }
+
+
+        public IActionResult GetCountProjectTaskByProjectIdPage()
+        {
+            List<Project> projects = JsonConvert
+                .DeserializeObject<IEnumerable<Project>>(_hubEnvironment.ServerHubConnector.GetAllProject().Result.AttachedObject.ToString()
+                ).ToList();
+
+            List<SelectListItem> selectTeam = projects.Select(s => new SelectListItem
+            {
+                Value = s.Id.ToString(),
+                Text = $"{s.Title} ({s.Team.Name})"
+            }).ToList();
+
+            return View(new GetCountProjectTaskByProjectIdModel(selectTeam));
+        }
+
+        [HttpPost]
+        public IActionResult GetCountProjectTaskByProjectIdList(GetCountProjectTaskByProjectIdModel model)
+        {
+            List<ProjectTask> projects = JsonConvert
+                .DeserializeObject<IEnumerable<ProjectTask>>(_hubEnvironment.ServerHubConnector.GetCountProjectTaskByProjectId(model.ProjectId).Result.AttachedObject.ToString()
+                ).ToList();
+
+            return View(new GetCountProjectTaskByProjectIdResultModel(projects));
+        }
+
+
+        public IActionResult GetCountSuccessProjectTaskByProjectIdPage()
+        {
+            List<Project> projects = JsonConvert
+                .DeserializeObject<IEnumerable<Project>>(_hubEnvironment.ServerHubConnector.GetAllProject().Result.AttachedObject.ToString()
+                ).ToList();
+
+            List<SelectListItem> selectTeam = projects.Select(s => new SelectListItem
+            {
+                Value = s.Id.ToString(),
+                Text = $"{s.Title} ({s.Team.Name})"
+            }).ToList();
+
+            return View(new GetCountSuccessProjectTaskByProjectIdModel(selectTeam));
+        }
+
+        [HttpPost]
+        public IActionResult GetCountSuccessProjectTaskByProjectIdList(GetCountProjectTaskByProjectIdModel model)
+        {
+            List<ProjectTask> projects = JsonConvert
+                .DeserializeObject<IEnumerable<ProjectTask>>(_hubEnvironment.ServerHubConnector.GetCountSuccessProjectTaskByProjectId(model.ProjectId).Result.AttachedObject.ToString()
+                ).ToList();
+
+            return View(new GetCountSuccessProjectTaskByProjectIdResultModel(projects));
+        }
+
+
+        public IActionResult GetPercentProjectTaskByProjectIdPage()
+        {
+            List<Project> projects = JsonConvert
+                .DeserializeObject<IEnumerable<Project>>(_hubEnvironment.ServerHubConnector.GetAllProject().Result.AttachedObject.ToString()
+                ).ToList();
+
+            List<SelectListItem> selectTeam = projects.Select(s => new SelectListItem
+            {
+                Value = s.Id.ToString(),
+                Text = $"{s.Title} ({s.Team.Name})"
+            }).ToList();
+
+            return View(new GetPercentProjectTaskByProjectIdModel(selectTeam));
+        }
+
+        [HttpPost]
+        public IActionResult GetPercentProjectTaskByProjectIdList(GetPercentProjectTaskByProjectIdModel model)
+        {
+            List<ProjectTask> projects = JsonConvert
+                .DeserializeObject<IEnumerable<ProjectTask>>(_hubEnvironment.ServerHubConnector.GetCountProjectTaskByProjectId(model.ProjectId).Result.AttachedObject.ToString()
+                ).ToList();
+
+            return View(new GetPercentProjectTaskByProjectIdResultModel(projects));
+        }
     }
 }

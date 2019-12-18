@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using SoftwareCompany.DAL.Common.Entities;
 
 namespace SoftwareCompany.BLL.DomainEvents.ProjectTaskEvents.GetCountSuccessTaskByProjectIdEvent
 {
     public class GetCountSuccessTaskByProjectIdResponseEvent
     {
-        public int CountSuccessTask { get; set; }
+        public IEnumerable<ProjectTask> SuccessTasks { get; set; }
 
-        public GetCountSuccessTaskByProjectIdResponseEvent(int countSuccessTask)
+        public GetCountSuccessTaskByProjectIdResponseEvent(IEnumerable<ProjectTask> successTasks)
         {
-            CountSuccessTask = countSuccessTask;
+            SuccessTasks = successTasks;
         }
     }
 }

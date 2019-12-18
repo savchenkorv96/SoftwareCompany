@@ -1,0 +1,19 @@
+﻿@model SoftwareCompany.Client.WebApp.Models.TaskModel.GetCountProjectTaskByProjectIdModel
+@{
+    ViewData["Title"] = "GetCountProjectTaskByProjectIdPage";
+}
+
+<h1>GetCountProjectTaskByProjectIdPage</h1>
+
+<div class="container">
+    <form asp-controller="Task" asp-action="GetCountProjectTaskByProjectIdList">
+        <div class="form-group">
+            <div class="form-group">
+                <label>Project:</label>
+                <select asp-for="ProjectId" asp-items="@Model.Projects" class="form-control">
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Get Project</button>
+        </div>
+    </form>
+</div>

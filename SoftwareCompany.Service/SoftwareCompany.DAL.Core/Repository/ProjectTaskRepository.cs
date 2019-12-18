@@ -29,14 +29,14 @@ namespace SoftwareCompany.DAL.Core.Repository
             return Tasks.Where((data) => data.Employee.Id == id);
         }
 
-        public int GetCountTaskByProjectId(int id)
+        public IEnumerable<ProjectTask> GetCountTaskByProjectId(int id)
         {
-            return Tasks.Count((data) => data.Project.Id == id);
+            return Tasks.Where((data) => data.Project.Id == id);
         }
 
-        public int GetCountSuccessTaskByProjectId(int id)
+        public IEnumerable<ProjectTask> GetCountSuccessTaskByProjectId(int id)
         {
-            return Tasks.Count((data) => data.Project.Id == id && data.Project.Status == ProjectStatus.Finish);
+            return Tasks.Where((data) => data.Project.Id == id && data.Project.Status == ProjectStatus.Finish);
         }
         
         public IEnumerable<ProjectTask> GetAll()

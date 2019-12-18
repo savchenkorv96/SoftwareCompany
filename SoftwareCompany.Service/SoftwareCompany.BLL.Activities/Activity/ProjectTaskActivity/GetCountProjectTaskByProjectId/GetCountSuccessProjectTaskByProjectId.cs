@@ -23,8 +23,8 @@ namespace SoftwareCompany.BLL.Activities.Activity.ProjectTaskActivity.GetCountPr
 
             try
             {
-                int countSuccessTask = _projectTaskRepository.GetCountSuccessTaskByProjectId(request.ProjectId);
-                response = new GetCountSuccessTaskByProjectIdResponseEvent(countSuccessTask);
+                IEnumerable<ProjectTask> SuccessTasks = _projectTaskRepository.GetCountSuccessTaskByProjectId(request.ProjectId);
+                response = new GetCountSuccessTaskByProjectIdResponseEvent(SuccessTasks);
             }
             catch (Exception ex)
             {

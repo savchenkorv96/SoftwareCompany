@@ -1,0 +1,84 @@
+﻿@using SoftwareCompany.Client.Common.Entities
+@using SoftwareCompany.Client.WebApp.Infrasctucture
+@using TaskStatus = SoftwareCompany.Client.Common.Enumerations.TaskStatus
+@model SoftwareCompany.Client.WebApp.Models.TaskModel.GetCountSuccessProjectTaskByProjectIdResultModel
+@{
+    ViewData["Title"] = "GetCountSuccessProjectTaskByProjectIdList";
+}
+@{
+    @if (Context.Session.GetJson<Account>("account") == null)
+    {
+        Context.Response.Redirect("../Login");
+    }
+}
+<h1>GetCountSuccessProjectTaskByProjectIdList</h1>
+
+<div>
+    <button type="button" class="btn btn-success">
+        Count Task In Project: <span class="badge badge-light"><b>@Model.ProjectTasks.Count</b></span>
+    </button>
+</div>
+<br />
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Project</th>
+            <th scope="col">Employee</th>
+            <th scope="col">Deadline</th>
+            <th scope="col">Complexity</th>
+            <th scope="col">Status</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            @foreach (var item in @Model.ProjectTasks)
+            {
+                <tr>
+                    <th scope="row">@item.Id</th>
+                    <td>@item.Title</td>
+                    <td>@item.Description</td>
+                    <td>@item.Project.Title</td>
+                    <td>@item.Employee.Account.Login</td>
+                    <td>@item.Deadline</td>
+                    <td>@item.Complexity</td>
+                    <td>
+                        @{
+                            @if (@item.Status == TaskStatus.Open)
+                            {
+                                <span class="badge badge-danger">Open</span>
+                            }
+                            @if (@item.Status == TaskStatus.InProgress)
+                            {
+                                <span class="badge badge-primary">InProgress</span>
+                            }
+                            @if (@item.Status == TaskStatus.ToBeTested)
+                            {
+                                <span class="badge badge-secondary">ToBeTested</span>
+                            }
+                            @if (@item.Status == TaskStatus.InTest)
+                            {
+                                <span class="badge badge-primary">InTest</span>
+                            }
+                            @if (@item.Status == TaskStatus.Closed)
+                            {
+                                <span class="badge badge-success">Closed</span>
+                            }
+                            @if (@item.Status == TaskStatus.Reopen)
+                            {
+                                <span class="badge badge-danger">Reopen</span>
+                            }
+
+                        }
+                    </td>
+                    <td><button type="button" class="btn btn-outline-primary">Edit</button></td>
+                    <td><button type="button" class="btn btn-outline-danger">Delete</button></td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

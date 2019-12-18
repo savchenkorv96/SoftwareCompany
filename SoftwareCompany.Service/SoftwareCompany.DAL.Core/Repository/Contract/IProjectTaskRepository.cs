@@ -10,7 +10,7 @@ namespace SoftwareCompany.DAL.Core.Repository.Contract
         IEnumerable<ProjectTask> Tasks { get; }
         
         IEnumerable<ProjectTask> GetTaskListByEmployeeId(int id);
-        int GetCountTaskByProjectId(int id);
-        int GetCountSuccessTaskByProjectId(int id);
+        IEnumerable<ProjectTask> GetCountTaskByProjectId(int id);
+        IEnumerable<ProjectTask> GetCountSuccessTaskByProjectId(int id);
     }
 }

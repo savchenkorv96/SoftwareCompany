@@ -160,7 +160,7 @@ namespace SoftwareCompany.Service.Core.Hubs.ServerHub
                     GetCountTaskByProjectIdResponseEvent response =
                         _hubEnvironment.UseCaseFactory.Create<IUseCase<GetCountTaskByProjectIdRequestEvent, GetCountTaskByProjectIdResponseEvent>>().Execute(request);
 
-                    operationStatusInfo.AttachedObject = response.CountTask;
+                    operationStatusInfo.AttachedObject = response.Tasks;
 
                     return operationStatusInfo;
                 }
@@ -186,7 +186,7 @@ namespace SoftwareCompany.Service.Core.Hubs.ServerHub
                     GetCountSuccessTaskByProjectIdResponseEvent response =
                         _hubEnvironment.UseCaseFactory.Create<IUseCase<GetCountSuccessTaskByProjectIdRequestEvent, GetCountSuccessTaskByProjectIdResponseEvent>>().Execute(request);
 
-                    operationStatusInfo.AttachedObject = response.CountSuccessTask;
+                    operationStatusInfo.AttachedObject = response.SuccessTasks;
 
                     return operationStatusInfo;
                 }
