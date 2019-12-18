@@ -1,0 +1,55 @@
+﻿@using SoftwareCompany.Client.Common.Entities
+@using SoftwareCompany.Client.WebApp.Infrasctucture
+@using TaskStatus = SoftwareCompany.Client.Common.Enumerations.TaskStatus
+@model SoftwareCompany.Client.WebApp.Models.TaskModel.CreateTaskModel
+@{
+    ViewData["Title"] = "CreateTaskPage";
+}
+@{
+    @if (Context.Session.GetJson<Account>("account") == null)
+    {
+        Context.Response.Redirect("../Login");
+    }
+}
+<h1>CreateTaskPage</h1>
+
+<div class="container" style="width: 500px">
+    <form asp-controller="Task" asp-action="CreateTask" method="post">
+        <div class="form-group">
+            <label>Title:</label>
+            <input asp-for="ProjectTask.Title" class="form-control" type="text">
+        </div>
+        <div class="form-group">
+            <label>Description:</label>
+            <input asp-for="ProjectTask.Description" class="form-control" type="text">
+        </div>
+        <div class="form-group">
+            <label>Project:</label>
+            <select asp-for="ProjectId" asp-items="@Model.Project" class="form-control">
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Employee:</label>
+            <select asp-for="EmployeeId" asp-items="@Model.Employee" class="form-control">
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Deadline:</label>
+            <input asp-for="ProjectTask.Deadline" value="@DateTime.Now" class="form-control" type="datetime">
+        </div>
+        <div class="form-group">
+            <label>Complexity:</label>
+            <input asp-for="ProjectTask.Complexity" class="form-control" type="text">
+        </div>
+        <div class="form-group">
+            <label>Project Status:</label>
+            <select asp-for="ProjectTask.Status" asp-items="Html.GetEnumSelectList<TaskStatus>()" class="form-control">
+            </select>
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+</div>
