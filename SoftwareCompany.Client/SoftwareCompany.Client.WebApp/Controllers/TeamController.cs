@@ -45,7 +45,7 @@ namespace SoftwareCompany.Client.WebApp.Controllers
 
             if (operationStatusInfo.OperationStatus == OperationStatus.Done)
             {
-                return TeamList();
+                return RedirectToAction("TeamList");
             }
             else
             {

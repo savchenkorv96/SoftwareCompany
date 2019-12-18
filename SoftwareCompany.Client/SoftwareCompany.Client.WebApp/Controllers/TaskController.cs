@@ -70,11 +70,11 @@ namespace SoftwareCompany.Client.WebApp.Controllers
 
             if (operationStatusInfo.OperationStatus == OperationStatus.Done)
             {
-                return TaskList();
+                return RedirectToAction("TaskList");
             }
             else
             {
-                return CreateTaskPage();
+                return RedirectToAction("CreateTaskPage");
             }
         }
     }

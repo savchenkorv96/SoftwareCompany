@@ -104,7 +104,7 @@ namespace SoftwareCompany.Client.WebApp.Controllers
 
             if (operationStatusInfo.OperationStatus == OperationStatus.Done)
             {
-                return ProjectList();
+                return RedirectToAction("ProjectList");
             }
             else
             {

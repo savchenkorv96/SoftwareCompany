@@ -72,7 +72,7 @@ namespace SoftwareCompany.Client.WebApp.Controllers
 
             if (operationStatusInfo.OperationStatus == OperationStatus.Done)
             {
-                return EmployeeList();
+                return RedirectToAction("EmployeeList");
             }
             else
             {
