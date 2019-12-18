@@ -34,6 +34,8 @@ namespace SoftwareCompany.Client.WebApp.Controllers
             {
                 Account account = JsonConvert.DeserializeObject<Account>(op.AttachedObject.ToString());
                 HttpContext.Session.SetJson("account", account);
+                Employee employee = JsonConvert.DeserializeObject<Employee>(_hubEnvironment.ServerHubConnector.GetEmployeeByAccountId(account.Id).Result.AttachedObject.ToString());
+                HttpContext.Session.SetJson("employee", employee);
                 return Redirect("/Home");
             }
             else
