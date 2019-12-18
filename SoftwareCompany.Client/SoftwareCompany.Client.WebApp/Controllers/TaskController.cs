@@ -77,5 +77,32 @@ namespace SoftwareCompany.Client.WebApp.Controllers
                 return RedirectToAction("CreateTaskPage");
             }
         }
+
+
+        public IActionResult GetProjectTaskByEmployeeIdPage()
+        {
+            List<Employee> teams = JsonConvert
+                .DeserializeObject<IEnumerable<Employee>>(_hubEnvironment.ServerHubConnector.GetAllEmployee().Result.AttachedObject.ToString()
+                ).ToList();
+
+            List<SelectListItem> selectTeam = teams.Select(s => new SelectListItem
+            {
+                Value = s.Id.ToString(),
+                Text = s.Account.FirstName + " " + s.Account.LastName
+            }).ToList();
+
+            return View(new GetProjectTaskByEmployeeIdModel(selectTeam));
+        }
+
+
+        [HttpPost]
+        public IActionResult GetProjectTaskByEmployeeIdList(GetProjectTaskByEmployeeIdModel model)
+        {
+            List<ProjectTask> projects = JsonConvert
+                .DeserializeObject<IEnumerable<ProjectTask>>(_hubEnvironment.ServerHubConnector.GetProjectTaskByEmployeeId(model.EmployeeId).Result.AttachedObject.ToString()
+                ).ToList();
+
+            return View(new GetProjectTaskByEmployeeIdResultModel(projects));
+        }
     }
 }

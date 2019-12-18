@@ -1,0 +1,19 @@
+﻿@model SoftwareCompany.Client.WebApp.Models.TaskModel.GetProjectTaskByEmployeeIdModel
+@{
+    ViewData["Title"] = "GetProjectTaskByEmployeeIdPage";
+}
+
+<h1>GetProjectTaskByEmployeeIdPage</h1>
+
+<div class="container">
+    <form asp-controller="Task" asp-action="GetProjectTaskByEmployeeIdList">
+        <div class="form-group">
+            <div class="form-group">
+                <label>Employee:</label>
+                <select asp-for="EmployeeId" asp-items="@Model.Employee" class="form-control">
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Get Project</button>
+        </div>
+    </form>
+</div>
